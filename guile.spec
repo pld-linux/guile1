@@ -80,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 - all %doc moved to devel,
 - simplification in %install and %files,
 - changed permiddion on shared libraries to 755,
-- added striping shared libraries,
+- %%{version} macro instead %%{PACKAGE_VERSION}.
 
 * Wed Apr 28 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.2-5]
@@ -114,4 +114,4 @@ rm -rf $RPM_BUILD_ROOT
 - added "Requires: /bin/sh" (for guile-snarf) in guile package and
   "Requires: m4" for guile-devel,
 - added macro %%{PACKAGE_VERSION} in "Source:" and %files,
-- added striping shared libs and /usr/bin/guile,
+- added %attr macros in %files.
