@@ -2,7 +2,7 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.3
-Release:	6
+Release:	7
 Copyright:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/J瞛yki
@@ -68,7 +68,7 @@ make
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/guile/site
 
-make install prefix=$RPM_BUILD_ROOT/usr/
+make install prefix=$RPM_BUILD_ROOT/%{_prefix}
 
 strip $RPM_BUILD_ROOT%{_libdir}/*.so.*.*
 
@@ -109,69 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.a
 
 %changelog
-* Mon Apr 19 1999 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
-  [1.3-6]
-- recompiles on new rpm.
-
-* Thu Mar 11 1999 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
-  [1.3-4]
-- added "Conflicts: glibc <= 2.0.7" to prevent installing guile in proper
-  enviroment,
-- simplifications in %files,
-- Group in devel and static changed to Development/Libraries.
-
-* Sun Dec 13 1998 Wojtek 奸usarczyk <wojtek@shadow.eu.org>
-  [1.3-2d]
-- major changes -- for PLD. 
-
-* Wed Dec  9 1998 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
-  [1.3-2]
-- added using LDFLAGS="-s" to ./configure enviroment,
-- added guile-libtool.patch for correct linking shared libraries.
-
-* Sun Nov  1 1998 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
-  [1.3-1]
-- added %clean section.
-
-* Tue Sep  1 1998 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
-  [1.2-6]
-- added -q %setup parameter,
-- changed Buildroot to /tmp/%%{name}-%%{version}-root,
-- added using %%{name} and %%{version} in Source,
-- added static subpackage,
-- added using $RPM_OPT_FLAGS during compile,
-- added full %attr description in %files,
-- added stripping shared libraries,
-- all %doc moved to devel,
-- simplification in %install and %files,
-- changed permiddion on shared libraries to 755,
-- %%{version} macro instead %%{PACKAGE_VERSION}.
-
-* Wed Apr 28 1998 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
-  [1.2-5]
-- added %clean section,
-- Buildroot changed to /tmp/gile-%%{PACKAGE_VERSION}-root,
-- replaced "mkdir -p" with "install -d" in %install,
-- addec "Requires: guile = %{PACKAGE_VERSION}" for devel subpackage,
-- added %defattr macros in %files (requires rpm >= 2.4.99).
-
-* Thu Sep 18 1997 Tomasz K這czko <kloczek@idk.com.pl>
-  [1.2-3]
-- added %attr(-, root, root) for %doc, 
-- in %post, %postun ldconfig runed as parameter "-p",
-- removed /bin/sh from requires,
-- added %description,
-- changes in %files.
-
-* Fri Jul 11 1997 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>  (1.2-2)
-  [1.2-2]
-- all rewrited for using Buildroot,
-- added %postun,
-- removed making buid logs,
-- removed "--inclededir", added "--enable-dynamic-linking" to configure
-  parameters,
-- added stripping shared libs and %{_bindir}/guile,
-- added "Requires: /bin/sh" (for guile-snarf) in guile package and
-  "Requires: m4" for guile-devel,
-- added macro %%{PACKAGE_VERSION} in "Source:" and %files,
-- added %attr macros in %files.
+* Fri May 21 1999 Tomasz K這czko <kloczek@rudy.mif.pg.gda.pl>
+  [1.3-7]
+- spec writted by me,
+- pl translation by Wojtek 奸usarczyk <wojtek@shadow.eu.org>.
