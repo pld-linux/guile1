@@ -14,7 +14,7 @@ Patch3:		%{name}-SCM_SITE_DIR_path.patch
 Patch4:		%{name}-acinclude.m4_fixes.patch
 Patch5:		%{name}-am_fixes.patch
 Patch6:		%{name}-use_system_libltd.aptch
-BuildRequires:	libltd-devel
+BuildRequires:	libltdl-devel
 BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
 Requires:	umb-scheme
