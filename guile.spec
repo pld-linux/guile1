@@ -1,9 +1,9 @@
 Summary:     GNU Extension language
 Name:        guile
-Version:     1.2
-Release:     4
+Version:     1.3
+Release:     1
 Source:      ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
-Copyright:   GPL aka. CopyLeft
+Copyright:   GPL
 Group:       Development/Languages
 Buildroot:   /tmp/%{name}-%{version}-root
 Requires:    umb-scheme
