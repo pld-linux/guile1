@@ -2,7 +2,7 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.4.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -66,22 +66,22 @@ Biblioteka statyczna Guile.
 #%patch2 -p1
 
 %build
-rm -f missing
-libtoolize -c -f
-aclocal -I guile-config
-autoconf
-automake -a -c -f
-cp ltmain.sh guile-readline
-cd guile-readline
-aclocal
-autoconf
-automake -a -c -f
-cd -
+#rm -f missing
+#libtoolize -c -f
+#aclocal -I guile-config
+#autoconf
+#automake -a -c -f
+#cp ltmain.sh guile-readline
+#cd guile-readline
+#aclocal
+#autoconf
+#automake -a -c -f
+#cd -
 %configure \
 	--with-threads
 
-%{__make} \
-	THREAD_LIBS_LOCAL=`pwd`/qt/.libs/libqthreads.so
+%{__make}
+#	THREAD_LIBS_LOCAL=`pwd`/qt/.libs/libqthreads.so
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -96,7 +96,7 @@ install -d $RPM_BUILD_ROOT{%{_datadir}/guile/site,%{_libdir}/guile}
 # cases) we get libguilereadline.so linked with (old) libguile.so.9 (!!!) and we cannot
 # install it, so I had to fix it :-) (filon)
 cd guile-readline
-gcc -shared readline.lo -Wl,--rpath ../libguile/.libs/libguile.so -lreadline -lncurses -Wl,-soname -Wl,libguilereadline.so.0 \
+gcc -shared readline.lo -Wl,--rpath -Wl,/usr/lib ../libguile/.libs/libguile.so -L/usr/lib -lreadline -lncurses -Wl,-soname -Wl,libguilereadline.so.0 \
 -o $RPM_BUILD_ROOT%{_libdir}/libguilereadline.so.0.0.1
 cd -
 
