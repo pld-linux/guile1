@@ -70,7 +70,7 @@ install -d $RPM_BUILD_ROOT/usr/share/guile/site
 
 make install prefix=$RPM_BUILD_ROOT/usr/
 
-strip $RPM_BUILD_ROOT/usr/lib/*.so.*.*
+strip $RPM_BUILD_ROOT%{_libdir}/*.so.*.*
 
 ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT/usr/share/guile/slib
 
@@ -94,7 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) /usr/bin/*
-%attr(755,root,root) /usr/lib/*.so.*.*
+%attr(755,root,root) %{_libdir}/*.so.*.*
 /usr/share/guile
 
 %files devel
@@ -102,11 +102,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.gz
 %{_infodir}/*info*
 /usr/include/*
-%attr(755,root,root) /usr/lib/*.so
+%attr(755,root,root) %{_libdir}/*.so
 
 %files static
 %defattr(644,root,root,755)
-/usr/lib/*.a
+%{_libdir}/*.a
 
 %changelog
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
