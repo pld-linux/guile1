@@ -2,11 +2,11 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.3
-Release:	4
+Release:	5
 Copyright:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
-Source:		ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
+Source:		ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
 Patch:		guile-libtool.patch
 Prereq:		/sbin/install-info
 Conflicts:	glibc <= 2.0.7
@@ -80,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) /usr/bin/*
 %attr(755,root,root) /usr/lib/*.so.*.*
-%attr(644,root,root) /usr/share/guile
+/usr/share/guile
 
 %files devel
 %defattr(644,root,root,755)
@@ -91,7 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(644,root,root) /usr/lib/*.a
 
-%attr(644,root,root) /usr/lib/*.a
+%changelog
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-5]
 - simplifications in %files,
