@@ -68,7 +68,7 @@ strip $RPM_BUILD_ROOT/usr/lib/*.so.*.*
 
 ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT/usr/share/guile/slib
 
-bzip2 -9 AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
+gzip -9fn AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -77,18 +77,20 @@ bzip2 -9 AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README
 rm -rf $RPM_BUILD_ROOT
 
 %files
+%defattr(644,root,root,755)
 %attr(755,root,root) /usr/bin/*
 %attr(755,root,root) /usr/lib/*.so.*.*
 %attr(644,root,root) /usr/share/guile
 
 %files devel
 %defattr(644,root,root,755)
-%doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.bz2 
+%doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.gz
 
 /usr/include/*
 %attr(755,root,root) /usr/lib/*.so
 %defattr(644,root,root,755)
 %attr(644,root,root) /usr/lib/*.a
+
 %attr(644,root,root) /usr/lib/*.a
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-5]
