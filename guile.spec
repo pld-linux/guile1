@@ -1,8 +1,8 @@
 Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
-Version:	1.4
-Release:	12
+Version:	1.4.1
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -10,15 +10,13 @@ Source0:	ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
 URL:		http://www.gnu.org/software/guile/guile.html
 Patch0:		%{name}-info.pach
 Patch1:		%{name}-fix_awk_patch.patch
-Patch2:		%{name}-std_headers.patch
-Patch3:		%{name}-SCM_SITE_DIR_path.patch
-Patch4:		%{name}-acinclude.m4_fixes.patch
-Patch5:		%{name}-am_fixes.patch
-Patch6:		%{name}-use_system_libltd.aptch
+Patch2:		%{name}-SCM_SITE_DIR_path.patch
 BuildRequires:	libltdl-devel
 BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
 Requires:	umb-scheme
+BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake >= 1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libguile9
 
@@ -62,24 +60,28 @@ Biblioteka statyczna Guile.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+
+# I wouldn't apply it, it breaks other programs, but I have fixed it, so
+# if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
+#%patch2 -p1
 
 %build
-#rm -f missing
-#libtoolize --copy --force
-#aclocal -I .
-#autoconf
-#automake -a -c -f
-#(cd guile-readline
-#aclocal
-#autoconf
-#automake -a -c -f)
-%configure2_13
-%{__make}
+rm -f missing
+libtoolize -c -f
+aclocal -I guile-config
+autoconf
+automake -a -c -f
+cp ltmain.sh guile-readline
+cd guile-readline
+aclocal
+autoconf
+automake -a -c -f
+cd -
+%configure \
+	--with-threads
+
+%{__make} \
+	THREAD_LIBS_LOCAL=`pwd`/qt/.libs/libqthreads.so
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -88,6 +90,15 @@ install -d $RPM_BUILD_ROOT{%{_datadir}/guile/site,%{_libdir}/guile}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	aclocaldir=%{_aclocaldir}
+
+# this is a hack :-)
+# libtool while installing links libguilereadline with installed libguile, so (in most
+# cases) we get libguilereadline.so linked with (old) libguile.so.9 (!!!) and we cannot
+# install it, so I had to fix it :-) (filon)
+cd guile-readline
+gcc -shared readline.lo -Wl,--rpath ../libguile/.libs/libguile.so -lreadline -lncurses -Wl,-soname -Wl,libguilereadline.so.0 \
+-o $RPM_BUILD_ROOT%{_libdir}/libguilereadline.so.0.0.1
+cd -
 
 gzip -9nf AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README
 
@@ -114,9 +125,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.gz
 %attr(755,root,root) %{_bindir}/guile-config
-%attr(755,root,root) %{_bindir}/guile-doc-snarf
-%attr(755,root,root) %{_bindir}/guile-snarf*
-%attr(755,root,root) %{_bindir}/guile-func-name-check
+%attr(755,root,root) %{_bindir}/guile-snarf
 %attr(755,root,root) %{_libdir}/*.so
 %attr(755,root,root) %{_libdir}/*.la
 %{_infodir}/*info*
