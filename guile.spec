@@ -7,7 +7,7 @@ Summary(ru):	Язык расширений GNU
 Summary(uk):	Мова розширень GNU
 Name:		guile
 Version:	1.6.4
-Release:	2
+Release:	3
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
@@ -21,6 +21,7 @@ Patch4:		%{name}-ac_alloca_test.patch
 Patch5:		%{name}-ia64.patch
 Patch6:		%{name}-ppc64.patch
 Patch7:		%{name}-unknown_arch.patch
+Patch8:		%{name}-realloc.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
@@ -81,7 +82,7 @@ Summary(ru):	Файлы для разработки программ с Guile
 Summary(uk):	Файли для розробки програм з Guile
 Group:		Development/Libraries
 Requires:	m4
-Requires:	%{name} = %{epoch}:%{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	ncurses-devel >= 5.2
 Requires:	readline-devel >= 4.2
 Obsoletes:	libguile9-devel
@@ -118,7 +119,7 @@ Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com guile
 Summary(ru):	Статические библиотеки Guile
 Summary(uk):	Статичн╕ б╕бл╕отеки Guile
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Guile static library.
@@ -144,6 +145,7 @@ Bibliotecas estАticas para desenvolvimento com guile
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 # I wouldn't apply it, it breaks other programs, but I have fixed it, so
 # if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
