@@ -100,7 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.gz
-
+/usr/info/*info*
 /usr/include/*
 %attr(755,root,root) /usr/lib/*.so
 
