@@ -10,25 +10,19 @@ Summary(pt_BR):	Linguagem de extensão da GNU
 Summary(ru):	ñÚÙË ÒÁÓÛÉÒÅÎÉÊ GNU
 Summary(uk):	íÏ×Á ÒÏÚÛÉÒÅÎØ GNU
 Name:		guile
-Version:	1.6.4
-Release:	5
+Version:	1.6.5
+Release:	1
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
-# Source0-md5:	a4aceb5f185878c1de4e8aa7c38b6d1d
+# Source0-md5:	5fc12555279d2062715877b7304a9b36
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
 Patch3:		%{name}-noldflagsinconfig.patch
-Patch4:		%{name}-ac_alloca_test.patch
-Patch5:		%{name}-ia64.patch
-Patch6:		%{name}-ppc64.patch
-Patch7:		%{name}-unknown_arch.patch
-Patch8:		%{name}-realloc.patch
-Patch9:		%{name}-stack-end.patch
-Patch10:	%{name}-ttyname.patch
-Patch11:	%{name}-mktemp.patch
+Patch4:		%{name}-ttyname.patch
+Patch5:		%{name}-unknown_arch.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
@@ -149,15 +143,7 @@ Bibliotecas estáticas para desenvolvimento com guile
 %patch1 -p1
 %patch3 -p1
 %patch4 -p1
-# it comes from RH, was meant to remove usage of (g)libc internal symbols(?)
-# - but it only causes guile memory fault during build
-#%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p0
+%patch5 -p1
 
 # I wouldn't apply it, it breaks other programs, but I have fixed it, so
 # if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
