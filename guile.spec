@@ -140,15 +140,15 @@ Bibliotecas estáticas para desenvolvimento com guile
 %patch3 -p1
 
 %build
-%{__libtoolize}
-%{__aclocal} -I guile-config
-%{__autoconf}
-%{__automake}
+#%%{__libtoolize}
+#%%{__aclocal} -I guile-config
+#%%{__autoconf}
+#%%{__automake}
 cd guile-readline
-%{__aclocal} -I ../guile-config
-%{__autoconf}
+#%%{__aclocal} -I ../guile-config
+#%%{__autoconf}
 # DON'T USE --force HERE - it would break build
-automake -a -c --foreign
+#automake -a -c --foreign
 cd ..
 %configure \
 	--with-threads \
