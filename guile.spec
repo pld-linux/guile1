@@ -16,7 +16,7 @@ Epoch:		5
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
-# Source0-md5: a4aceb5f185878c1de4e8aa7c38b6d1d
+# Source0-md5:	a4aceb5f185878c1de4e8aa7c38b6d1d
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
