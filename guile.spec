@@ -105,13 +105,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/*.a
-
-%changelog
-* Mon Jun 07 1999 Jan Rêkorajski <baggins@pld.org.pl>
-  [1.3-8]
-- spec cleanup
-
-* Fri May 21 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.3-7]
-- spec writted by me,
-- pl translation by Wojtek ¦lusarczyk <wojtek@shadow.eu.org>.
