@@ -6,8 +6,6 @@ Release:	10
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
-Group(de):	Entwicklung/Sprachen
-Group(pl):	Programowanie/JЙzyki
 Source0:	ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.pach
 Patch1:		%{name}-fix_awk_patch.patch
@@ -30,13 +28,6 @@ Guile jest implementacj╠ Scheme napisan╠ w C.
 Summary:	Guile's header files, etc
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja Guile
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	m4
 Requires:	%{name} = %{version}
 Requires:	ncurses-devel >= 5.2
@@ -53,13 +44,6 @@ Pliki nagЁСwkowe i dokumentacja Guile.
 Summary:	Guile static libraries
 Summary(pl):	Biblioteka statyczna Guile
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
