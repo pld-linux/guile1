@@ -2,7 +2,7 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.4 
-Release:	7
+Release:	8
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -63,7 +63,7 @@ Biblioteka statyczna Guile.
 %patch2 -p1
 
 %build
-%configure \
+%configure2_13 \
 	--enable-dynamic-linking
 %{__make}
 
