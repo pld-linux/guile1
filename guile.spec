@@ -1,7 +1,7 @@
 Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
-Version:	1.4 
+Version:	1.4
 Release:	10
 Epoch:		1
 License:	GPL
@@ -37,7 +37,7 @@ Obsoletes:	libguile9-devel
 %description devel
 What's needed to develop apps linked w/ guile
 
-%description -l pl devel
+%description devel -l pl
 Pliki nag³ówkowe i dokumentacja Guile.
 
 %package static
@@ -49,7 +49,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Guile static library.
 
-%description -l pl static
+%description static -l pl
 Biblioteka statyczna Guile.
 
 %prep
@@ -71,7 +71,7 @@ install -d $RPM_BUILD_ROOT%{_datadir}/guile/site
 	DESTDIR=$RPM_BUILD_ROOT \
 	aclocaldir=%{_aclocaldir}
 
-gzip -9nf AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
+gzip -9nf AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
