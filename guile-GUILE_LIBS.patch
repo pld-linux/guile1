@@ -1,0 +1,22 @@
+--- guile-1.4.1/configure.in~	Mon Jan 13 01:57:43 2003
++++ guile-1.4.1/configure.in	Mon Jan 13 01:57:43 2003
+@@ -554,7 +554,7 @@
+ #######################################################################
+ 
+ dnl Tell guile-config what flags guile users should link against.
+-GUILE_LIBS="$LDFLAGS $THREAD_LIBS_INSTALLED $LIBS"
++GUILE_LIBS="$THREAD_LIBS_INSTALLED $LIBS"
+ AC_SUBST(GUILE_LIBS)
+ 
+ AC_SUBST(AWK)
+--- guile-1.4.1/configure~	Mon Jan 13 01:59:45 2003
++++ guile-1.4.1/configure	Mon Jan 13 01:59:45 2003
+@@ -13576,7 +13576,7 @@
+ 
+ #######################################################################
+ 
+-GUILE_LIBS="$LDFLAGS $THREAD_LIBS_INSTALLED $LIBS"
++GUILE_LIBS="$THREAD_LIBS_INSTALLED $LIBS"
+ 
+ 
+ 
