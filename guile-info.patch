@@ -14,3 +14,17 @@
  @c essay @end direntry
  @c essay
  @c essay @setchapternewpage off
+--- guile-1.4.1/doc/guile.texi.orig	Sun May  5 13:31:59 2002
++++ guile-1.4.1/doc/guile.texi	Tue May 21 22:21:17 2002
+@@ -24,9 +24,9 @@
+ @c @cropmarks
+ @c @end iftex
+ 
+-@dircategory The Algorithmic Language Scheme
++@dircategory Programming Languages:
+ @direntry
+-* Guile Reference: (guile).     The Guile reference manual.
++* Guile Reference: (guile).		The Guile reference manual
+ @end direntry
+ 
+ @setchapternewpage off
