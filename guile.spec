@@ -11,7 +11,7 @@ Patch0:		guile-info.pach
 Requires:	umb-scheme
 BuildRequires:	ncurses-devel >= 5.0
 BuildRequires:	readline-devel >= 4.1
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Guile, a portable, embeddable Scheme implementation written in C. Guile
