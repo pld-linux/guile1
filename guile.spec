@@ -6,8 +6,8 @@ Summary(pt_BR):	Linguagem de extensão da GNU
 Summary(ru):	ñÚÙË ÒÁÓÛÉÒÅÎÉÊ GNU
 Summary(uk):	íÏ×Á ÒÏÚÛÉÒÅÎØ GNU
 Name:		guile
-Version:	1.6.3
-Release:	2
+Version:	1.6.4
+Release:	1
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
@@ -15,8 +15,7 @@ Source0:	ftp://ftp.gnu.org/pub/gnu/guile/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
-Patch3:		%{name}-axp.patch
-Patch4:		%{name}-noldflagsinconfig.patch
+Patch3:		%{name}-noldflagsinconfig.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
@@ -136,7 +135,6 @@ Bibliotecas estáticas para desenvolvimento com guile
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
-%patch4 -p1
 
 # I wouldn't apply it, it breaks other programs, but I have fixed it, so
 # if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
