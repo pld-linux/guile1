@@ -1,12 +1,18 @@
---- guile-1.6.4/libguile/gc.c.orig	2004-05-24 21:54:13.755811688 +0200
-+++ guile-1.6.4/libguile/gc.c	2004-05-24 21:53:44.038032247 +0200
-@@ -1129,6 +1129,9 @@
-   /* FIXME: we should have a means to register C functions to be run
-    * in different phases of GC
-    */
-+  /* don't try to use scm_subr_table during its reallocation
-+   * (when scm_subr_table still points to old memory area after realloc() call) */
-+  if (strcmp(what, "scm_subr_table") != 0)
-   scm_mark_subr_table ();
+--- guile-1.6.4/libguile/gc.c.orig	2003-04-20 20:16:59.000000000 +0200
++++ guile-1.6.4/libguile/gc.c	2004-05-31 23:21:10.807334759 +0200
+@@ -2048,9 +2048,14 @@
+     scm_must_free() won't take NULL.
+   */
+   scm_mallocated += size - old_size;
+-  SCM_SYSCALL (ptr = realloc (where, size));
  
- #ifndef USE_THREADS
++  /*
++    The realloc must be after check_mtrigger(), since realloc might
++    munge the old block of memory, which will be scanned by GC.
++   */
+   check_mtrigger (what);
++
++  SCM_SYSCALL (ptr = realloc (where, size));
+   
+   if (NULL != ptr)
+     {
