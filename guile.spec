@@ -2,7 +2,7 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.3
-Release:	8
+Release:	9
 Copyright:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
@@ -11,6 +11,7 @@ Patch0:		guile-libtool.patch
 Patch1:		guile-ansi.patch
 Patch2:		guile-scm.patch
 Patch3:		guile-info.pach
+Patch4:		guile-ncurses.patch
 Prereq:		/sbin/install-info
 Requires:	umb-scheme
 Buildroot:	/tmp/%{name}-%{version}-root
@@ -56,6 +57,7 @@ Biblioteka statyczna Guile
 %patch1 -p1
 %patch2 -p0
 %patch3 -p1
+%patch4 -p1
 
 %build
 %configure \
