@@ -1,15 +1,16 @@
 Summary:     GNU Extension language
 Name:        guile
 Version:     1.3
-Release:     1
-Source:      ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
+Release:     2
 Copyright:   GPL
 Group:       Development/Languages
-Buildroot:   /tmp/%{name}-%{version}-root
+Source:      ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
+Patch0:      guile-libtool.patch
 Requires:    umb-scheme
+Buildroot:   /tmp/%{name}-%{version}-root
 Buildroot:	/tmp/%{name}-%{version}-root
 
-Guile, a portable, embeddable Scheme implementation written in C.  Guile
+%description
 Guile, a portable, embeddable Scheme implementation written in C. Guile
 provides a machine independent execution platform that can be linked in as a
 library when building extensible programs.
@@ -31,16 +32,21 @@ Guile static libraries.
 
 %prep
 %setup -q
-CFLAGS=$RPM_OPT_FLAGS ./configure --prefix=/usr --enable-dynamic-linking
+%patch0 -p1
 
 %build
+CFLAGS=$RPM_OPT_FLAGS LDFLAGS="-s" \
+./configure \
+	--prefix=/usr \
+	--enable-dynamic-linking
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/usr/share/guile/site
+
 make install prefix=$RPM_BUILD_ROOT/usr/
-strip $RPM_BUILD_ROOT/usr/{lib/lib*.so.*.*,bin/guile}
+strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
 
 ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT/usr/share/guile/slib
 
@@ -68,6 +74,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(644, root, root) /usr/lib/lib*.a
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-5]
+
+* Sun Nov  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.3-1]
+- added %clean section.
+
 * Tue Sep  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.2-6]
 - added -q %setup parameter,
