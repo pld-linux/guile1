@@ -1,8 +1,8 @@
 Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
-Version:	1.3.4
-Release:	3
+Version:	1.4 
+Release:	1
 License:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
@@ -14,9 +14,9 @@ BuildRequires:	readline-devel >= 4.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Guile, a portable, embeddable Scheme implementation written in C. Guile
-provides a machine independent execution platform that can be linked in as
-a library when building extensible programs.
+Guile, a portable, embeddable Scheme implementation written in C.
+Guile provides a machine independent execution platform that can be
+linked in as a library when building extensible programs.
 
 %description -l pl
 Guile jest implementacj± Scheme napisan± w C.
@@ -48,7 +48,7 @@ Requires:	%{name}-devel = %{version}
 Guile static library.
 
 %description -l pl static
-Biblioteka statyczna Guile
+Biblioteka statyczna Guile.
 
 %prep
 %setup -q
@@ -64,7 +64,9 @@ LDFLAGS="-s"; export LDFLAGS
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/guile/site
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	aclocaldir=%{_aclocaldir}
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/*.so.*.*
 
@@ -93,12 +95,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.gz
 %attr(755,root,root) %{_bindir}/guile-config
-%attr(755,root,root) %{_bindir}/guile-snarf
+%attr(755,root,root) %{_bindir}/guile-doc-snarf
+%attr(755,root,root) %{_bindir}/guile-snarf*
+%attr(755,root,root) %{_bindir}/guile-func-name-check
 %attr(755,root,root) %{_libdir}/*.so
 %attr(755,root,root) %{_libdir}/*.la
 %{_infodir}/*info*
 %{_includedir}/*
-%{_datadir}/aclocal/*
+%{_aclocaldir}/*
 
 %files static
 %defattr(644,root,root,755)
