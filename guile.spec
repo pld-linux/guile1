@@ -47,6 +47,9 @@ ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT/usr/share/guile/slib
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
+%clean
+rm -rf $RPM_BUILD_ROOT
+
 %files
 %defattr(644, root, root, 755)
 %attr(755, root, root) /usr/bin/*
@@ -65,6 +68,10 @@ ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT/usr/share/guile/slib
 %attr(644, root, root) /usr/lib/lib*.a
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-5]
+* Tue Sep  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.2-6]
+- added -q %setup parameter,
+- changed Buildroot to /tmp/%%{name}-%%{version}-root,
 - added using %%{name} and %%{version} in Source,
 - added static subpackage,
 - added using $RPM_OPT_FLAGS during compile,
