@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.gz
 %{_infodir}/*info*
-/usr/include/*
+%{_includedir}/*
 %attr(755,root,root) %{_libdir}/*.so
 
 %files static
