@@ -77,7 +77,7 @@ Summary(ru):	Файлы для разработки программ с Guile
 Summary(uk):	Файли для розробки програм з Guile
 Group:		Development/Libraries
 Requires:	m4
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 Requires:	ncurses-devel >= 5.2
 Requires:	readline-devel >= 4.2
 Obsoletes:	libguile9-devel
@@ -114,7 +114,7 @@ Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com guile
 Summary(ru):	Статические библиотеки Guile
 Summary(uk):	Статичн╕ б╕бл╕отеки Guile
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}
 
 %description static
 Guile static library.
