@@ -93,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) /usr/bin/*
+%attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/*.so.*.*
 %{_datadir}/guile
 
@@ -170,7 +170,7 @@ rm -rf $RPM_BUILD_ROOT
 - removed making buid logs,
 - removed "--inclededir", added "--enable-dynamic-linking" to configure
   parameters,
-- added stripping shared libs and /usr/bin/guile,
+- added stripping shared libs and %{_bindir}/guile,
 - added "Requires: /bin/sh" (for guile-snarf) in guile package and
   "Requires: m4" for guile-devel,
 - added macro %%{PACKAGE_VERSION} in "Source:" and %files,
