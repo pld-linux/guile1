@@ -1,11 +1,10 @@
-diff -Nru guile-1.3/doc/data-rep.texi guile-1.3.new/doc/data-rep.texi
---- guile-1.3/doc/data-rep.texi	Fri Oct 16 00:06:34 1998
-+++ guile-1.3.new/doc/data-rep.texi	Mon Apr 12 10:14:40 1999
+--- guile-1.4/doc/data-rep.texi	Tue Jun 20 05:22:56 2000
++++ guile-1.4.new/doc/data-rep.texi	Wed Jun 21 17:44:54 2000
 @@ -7,10 +7,10 @@
  
  @include version.texi
  
--@dircategory Scheme Programming
+-@dircategory The Algorithmic Language Scheme
 +@dircategory Programming Languages:
  @direntry
 -* data-rep: (data-rep).  Data Representation in Guile --- how to use
