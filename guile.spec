@@ -2,7 +2,7 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.4 
-Release:	8
+Release:	9
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -34,6 +34,8 @@ Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	m4
 Requires:	%{name} = %{version}
+Requires:	ncurses-devel >= 5.2
+Requires:	readline-devel >= 4.2
 
 %description devel
 What's needed to develop apps linked w/ guile
