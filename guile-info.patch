@@ -1,0 +1,16 @@
+--- guile-1.4.1/doc/data-rep.texi~	Wed May 15 21:22:11 2002
++++ guile-1.4.1/doc/data-rep.texi	Wed May 15 21:30:25 2002
+@@ -7,10 +7,10 @@
+ @c essay
+ @c essay @include version.texi
+ @c essay
+-@c essay @dircategory The Algorithmic Language Scheme
++@c essay @dircategory Programming Languages:
+ @c essay @direntry
+-@c essay * data-rep: (data-rep).  Data Representation in Guile --- how to use
+-@c essay                          Guile objects in your C code.
++@c essay * data-rep: (data-rep).			Data Representation in Guile --- how to use
++@c essay                          		Guile objects in your C code.
+ @c essay @end direntry
+ @c essay
+ @c essay @setchapternewpage off
