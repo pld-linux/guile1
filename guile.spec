@@ -8,7 +8,7 @@ License:	GPL
 Group:		Development/Languages
 Source0:	ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
 URL:		http://www.gnu.org/software/guile/guile.html
-Patch0:		%{name}-info.pach
+Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
 BuildRequires:	libltdl-devel
