@@ -58,7 +58,7 @@ Biblioteka statyczna Guile
 %patch3 -p1
 
 %build
-%configure %{_target} \
+%configure \
 	--prefix=/usr \
 	--enable-dynamic-linking
 make
