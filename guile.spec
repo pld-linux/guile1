@@ -1,9 +1,14 @@
 Summary:	GNU Extension language
+Summary(es):	Lenguaje de extensiСn de la GNU
+Summary(ja):	╔╒╔в╔Й╔╠║╪╔╥╔Г╔С╓нЁхд╔╓н╓©╓А╓н GNU ╓к╓Х╓К Scheme ╓н╪баУ
 Summary(pl):	GNU Extension language
+Summary(pt_BR):	Linguagem de extensЦo da GNU
+Summary(ru):	Язык расширений GNU
+Summary(uk):	Мова розширень GNU
 Name:		guile
 Version:	1.4.1
 Release:	2
-Epoch:		1
+Epoch:		5
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
@@ -25,12 +30,44 @@ Guile, a portable, embeddable Scheme implementation written in C.
 Guile provides a machine independent execution platform that can be
 linked in as a library when building extensible programs.
 
+%description -l es
+Guile es una implementaciСn de Scheme, que puede ser portАtil y
+empotrada, escrita en C. Guile provee una mАquina de ejecuciСn
+independiente de plataforma, que puede ser linkada como una biblioteca
+construyendo programas extensibles.
+
+%description -l ja
+GUILE (GNU's Ubiquitous Intelligent Language for Extension) ╓о Scheme
+╔в╔М╔╟╔И╔ъ╔С╔╟╦ю╦Л╓Р╪баУ╓╥╓© C ╓г╫Я╓╚╓Л╓©╔И╔╓╔ж╔И╔Й╓г╓╧║ё GUILE ╓о
+╔ч╔╥╔СхС╟мб╦╓н╪б╧т╢д╤╜╓г║╒╔в╔М╔╟╔И╔Ю╓нЁхд╔ю╜╓РдС╤║╓╥╓ч╓╧║ё
+
 %description -l pl
 Guile jest implementacj╠ Scheme napisan╠ w C.
 
+%description -l pt_BR
+Guile И um implementaГЦo de Scheme portАvel e embutМvel escrita em C.
+Guile provЙ uma mАquina de execuГЦo independente de plataforma, que
+pode ser ligada como uma biblioteca construindo programas extensМveis.
+
+%description -l ru
+Guile - это переносимая, встраиваемая реализация языка Scheme
+написанная на C. Guile предоставляет машинонезависимую среду
+исполнения, которая может быть скомпонована с программой в виде
+библиотеки.
+
+%description -l uk
+Guile - це переносима та вбудовувана реал╕зац╕я мови Scheme написана
+на C. Guile забезпечу╓ машинонезалежне середовище виконання, яке може
+бути скомпоноване з програмою у вигляд╕ б╕бл╕отеки.
+
 %package devel
 Summary:	Guile's header files, etc
+Summary(es):	Bibliotecas de Guile, archivos de inclusiСn, etc.
+Summary(ja):	GUILE Ёхд╔ю╜╔И╔╓╔ж╔И╔Ймя╓н╔И╔╓╔ж╔И╔Й╓х╔ь╔ц╔ю╔у╔║╔╓╔К
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja Guile
+Summary(pt_BR):	Bibliotecas da Guile, arquivos de inclusЦo, etc.
+Summary(ru):	Файлы для разработки программ с Guile
+Summary(uk):	Файли для розробки програм з Guile
 Group:		Development/Libraries
 Requires:	m4
 Requires:	%{name} = %{version}
@@ -41,12 +78,34 @@ Obsoletes:	libguile9-devel
 %description devel
 What's needed to develop apps linked w/ guile
 
+%description devel -l es
+Este paquete contiene todo lo necesario para desarrollar aplicaciones
+usando Guile.
+
+%description -l ja
+guile-devel ╔я╔ц╔╠║╪╔╦╓о╔И╔╓╔ж╔И╔Й╓Д╔ь╔ц╔ю╔у╔║╔╓╔К║╒╓╫╓нб╬...╓╒╓й╓©╓╛
+GUILE Ёхд╔ю╜╔И╔╓╔ж╔И╔Й╓Р╔Й╔С╔╞╓╥╓©╔в╔М╔╟╔И╔Ю╓Р╨Ню╝╓╧╓К╓н╓ки╛мв╓й
+╔у╔║╔╓╔К╓РдС╤║╓╥╓ч╓╧║ё
+
 %description devel -l pl
 Pliki nagЁСwkowe i dokumentacja Guile.
+
+%description devel -l pt_BR
+Este pacote contИm o que И necessАrio para desenvolver aplicaГУes
+usando a Guile.
+
+%description devel -l ru
+Все, что нужно для разработки приложений, скомпонованых с guile.
+
+%description devel -l uk
+Все, що потр╕бно для розробки програм, що компонуються з guile.
 
 %package static
 Summary:	Guile static libraries
 Summary(pl):	Biblioteka statyczna Guile
+Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com guile
+Summary(ru):	Статические библиотеки Guile
+Summary(uk):	Статичн╕ б╕бл╕отеки Guile
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
@@ -55,6 +114,15 @@ Guile static library.
 
 %description static -l pl
 Biblioteka statyczna Guile.
+
+%description static -l pt_BR
+Bibliotecas estАticas para desenvolvimento com guile
+
+%description static -l ru
+Статические библиотеки guile.
+
+%description static -l uk
+Статичн╕ б╕бл╕отеки guile.
 
 %prep
 %setup -q
@@ -67,12 +135,12 @@ Biblioteka statyczna Guile.
 
 %build
 #rm -f missing
-#libtoolize -c -f
+#libtoolize --copy --force
 #aclocal -I guile-config
 #autoconf
 #automake -a -c -f
-#cp ltmain.sh guile-readline
 #cd guile-readline
+#libtoolize --copy --force
 #aclocal
 #autoconf
 #automake -a -c -f
@@ -96,11 +164,10 @@ install -d $RPM_BUILD_ROOT{%{_datadir}/guile/site,%{_libdir}/guile}
 # cases) we get libguilereadline.so linked with (old) libguile.so.9 (!!!) and we cannot
 # install it, so I had to fix it :-) (filon)
 cd guile-readline
-gcc -shared readline.lo -Wl,--rpath -Wl,/usr/lib ../libguile/.libs/libguile.so -L/usr/lib -lreadline -lncurses -Wl,-soname -Wl,libguilereadline.so.0 \
+%{__cc} -shared readline.lo -Wl,--rpath -Wl,%{_libdir} ../libguile/.libs/libguile.so \
+-L%{_libdir} -lreadline -lncurses -Wl,-soname -Wl,libguilereadline.so.0 \
 -o $RPM_BUILD_ROOT%{_libdir}/libguilereadline.so.0.0.1
 cd -
-
-gzip -9nf AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -123,7 +190,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.gz
+%doc AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README
 %attr(755,root,root) %{_bindir}/guile-config
 %attr(755,root,root) %{_bindir}/guile-snarf
 %attr(755,root,root) %{_libdir}/*.so
