@@ -1,0 +1,11 @@
+--- libguile/guile-snarf.in
++++ libguile/guile-snarf.in
+@@ -69,7 +69,7 @@
+ 
+ # set vars and handler -- handle CPP override
+ cpp_ok_p=false
+-temp="/tmp/snarf.$$"
++temp=$(mktemp -q "${TMPDIR:-/tmp}/snarf.XXXXXX") || { echo >&2 "guile-snarf: can not create temporary file"; exit 1; }
+ if [ x"$CPP" = x ] ; then cpp="@CPP@" ; else cpp="$CPP" ; fi
+ 
+ trap "rm -f $temp" 0 1 2 15
