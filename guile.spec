@@ -1,8 +1,8 @@
 Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
-Version:	1.3.2
-Release:	2
+Version:	1.3.4
+Release:	1
 Copyright:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
