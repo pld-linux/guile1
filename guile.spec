@@ -59,7 +59,7 @@ Biblioteka statyczna Guile
 
 %build
 %configure \
-	--prefix=/usr \
+	--prefix=%{_prefix} \
 	--enable-dynamic-linking
 make
 
@@ -67,9 +67,9 @@ make
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/guile/site
 
-make install prefix=$RPM_BUILD_ROOT/%{_prefix}
+make install DESTDIR=$RPM_BUILD_ROOT
 
-strip $RPM_BUILD_ROOT%{_libdir}/*.so.*.*
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/*.so.*.*
 
 ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT%{_datadir}/guile/slib
 
