@@ -1,0 +1,11 @@
+--- guile-1.6.3/configure.in.orig	2002-12-08 02:48:52.000000000 +0100
++++ guile-1.6.3/configure.in	2003-04-21 15:22:06.000000000 +0200
+@@ -688,7 +688,7 @@
+ #######################################################################
+ 
+ dnl Tell guile-config what flags guile users should link against.
+-GUILE_LIBS="$LDFLAGS $THREAD_LIBS_INSTALLED $LIBS"
++GUILE_LIBS="$THREAD_LIBS_INSTALLED $LIBS"
+ AC_SUBST(GUILE_LIBS)
+ 
+ AC_SUBST(AWK)
