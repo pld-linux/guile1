@@ -19,6 +19,7 @@ Patch3:		%{name}-axp.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
+BuildRequires:	libltdl-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
@@ -140,15 +141,15 @@ Bibliotecas estáticas para desenvolvimento com guile
 %patch3 -p1
 
 %build
-#%%{__libtoolize}
-#%%{__aclocal} -I guile-config
-#%%{__autoconf}
-#%%{__automake}
+%{__libtoolize}
+%{__aclocal} -I guile-config
+%{__autoconf}
+%{__automake}
 cd guile-readline
-#%%{__aclocal} -I ../guile-config
-#%%{__autoconf}
+%{__aclocal} -I ../guile-config
+%{__autoconf}
 # DON'T USE --force HERE - it would break build
-#automake -a -c --foreign
+automake -a -c --foreign
 cd ..
 %configure \
 	--with-threads \
