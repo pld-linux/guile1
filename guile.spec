@@ -7,7 +7,10 @@ Copyright:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
 Source:		ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
-Patch:		guile-libtool.patch
+Patch0:		guile-libtool.patch
+Patch1:		guile-ansi.patch
+Patch2:		guile-scm.patch
+Patch3:		guile-info.pach
 Prereq:		/sbin/install-info
 Conflicts:	glibc <= 2.0.7
 Requires:	umb-scheme
@@ -20,12 +23,13 @@ library when building extensible programs.
 
 %description -l pl
 Guile jest implementacj± Scheme napisan± w C. 
-%package	devel
+
 %package devel
 Summary:	Guile's header files, etc.
 Summary(pl):	Pliki nag³ówkowe i dokumentacja Guile.
 Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
+Requires:	m4
 Requires:	%{name} = %{version}
 
 %description devel
@@ -34,7 +38,7 @@ What's needed to develop apps linked w/ guile
 %description -l pl devel
 Pliki nag³ówkowe i dokumentacja Guile.
 
-%package	static
+%package static
 Summary:	Guile static libraries
 Summary(pl):	Biblioteka statyczna Guile
 Group:		Development/Libraries
@@ -49,7 +53,10 @@ Biblioteka statyczna Guile
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p0
+%patch3 -p1
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
@@ -68,10 +75,19 @@ strip $RPM_BUILD_ROOT/usr/lib/*.so.*.*
 
 ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT/usr/share/guile/slib
 
-gzip -9fn AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
+gzip -9fn $RPM_BUILD_ROOT/usr/info/data-rep* \
+	AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
+%post devel
+/sbin/install-info /usr/info/data-rep.info.gz /etc/info-dir
+
+%preun devel
+if [ "$1" = "0" ]; then
+	/sbin/install-info --delete /usr/info/data-rep.info.info.gz /etc/info-dir
+fi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -88,12 +104,20 @@ rm -rf $RPM_BUILD_ROOT
 
 /usr/include/*
 %attr(755,root,root) /usr/lib/*.so
+
+%files static
 %defattr(644,root,root,755)
 %attr(644,root,root) /usr/lib/*.a
 
 %changelog
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-5]
+- recompiles on new rpm.
+
+* Thu Mar 11 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.3-4]
+- added "Conflicts: glibc <= 2.0.7" to prevent installing guile in proper
+  enviroment,
 - simplifications in %files,
 - Group in devel and static changed to Development/Libraries.
 
