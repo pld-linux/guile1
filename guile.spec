@@ -6,7 +6,7 @@ Summary(pt_BR):	Linguagem de extensЦo da GNU
 Summary(ru):	Язык расширений GNU
 Summary(uk):	Мова розширень GNU
 Name:		guile
-Version:	1.6.1
+Version:	1.6.3
 Release:	1
 Epoch:		5
 License:	GPL
