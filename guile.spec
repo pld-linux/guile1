@@ -1,17 +1,13 @@
 Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
-Version:	1.3
-Release:	9
+Version:	1.3.2
+Release:	1
 Copyright:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
 Source:		ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
-Patch0:		guile-libtool.patch
-Patch1:		guile-ansi.patch
-Patch2:		guile-scm.patch
-Patch3:		guile-info.pach
-Patch4:		guile-ncurses.patch
+Patch0:		guile-info.pach
 Prereq:		/sbin/install-info
 Requires:	umb-scheme
 Buildroot:	/tmp/%{name}-%{version}-root
@@ -54,10 +50,6 @@ Biblioteka statyczna Guile
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p0
-%patch3 -p1
-%patch4 -p1
 
 %build
 LDFLAGS="-s"; export LDFLAGS
@@ -72,8 +64,6 @@ install -d $RPM_BUILD_ROOT%{_datadir}/guile/site
 make install DESTDIR=$RPM_BUILD_ROOT
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/*.so.*.*
-
-ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT%{_datadir}/guile/slib
 
 gzip -9fn $RPM_BUILD_ROOT%{_infodir}/data-rep* \
 	AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
@@ -94,16 +84,20 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/guile
 %attr(755,root,root) %{_libdir}/*.so.*.*
 %{_datadir}/guile
 
 %files devel
 %defattr(644,root,root,755)
 %doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.gz
+%attr(755,root,root) %{_bindir}/guile-config
+%attr(755,root,root) %{_bindir}/guile-snarf
+%attr(755,root,root) %{_libdir}/*.so
+%attr(755,root,root) %{_libdir}/*.la
 %{_infodir}/*info*
 %{_includedir}/*
-%attr(755,root,root) %{_libdir}/*.so
+%{_datadir}/aclocal/*
 
 %files static
 %defattr(644,root,root,755)
