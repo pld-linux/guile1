@@ -1,0 +1,8 @@
+--- guile-1.4/libguile/guile-func-name-check.in	Sat Aug 26 19:19:07 2000
++++ guile-1.4.new/libguile/guile-func-name-check.in	Tue Jan 11 22:47:57 2000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/awk -f
++#!/bin/awk -f
+ # Written by Greg J. Badros, <gjb@cs.washington.edu>
+ # 11-Jan-2000
+ 
