@@ -11,7 +11,7 @@ Release:	5
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
-Source0:	ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnu.org/pub/gnu/guile/%{name}-%{version}.tar.gz
 URL:		http://www.gnu.org/software/guile/guile.html
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
