@@ -1,0 +1,16 @@
+--- guile-1.6.0/libguile/gc_os_dep.c.unknown_arch	2002-07-08 11:09:32.000000000 -0400
++++ guile-1.6.0/libguile/gc_os_dep.c	2002-12-05 08:58:12.000000000 -0500
+@@ -195,11 +195,11 @@
+ #    define I386
+ #    define mach_type_known
+ # endif
+-# if defined(LINUX) && (defined(__ia64__) || defined(__ia64))
++# if defined(LINUX) && (defined(__ia64__) || defined(__ia64)) || defined(__x86_64__)
+ #    define IA64
+ #    define mach_type_known
+ # endif
+-# if defined(LINUX) && defined(powerpc)
++# if defined(LINUX) && defined(powerpc) || defined(__s390__)
+ #    define POWERPC
+ #    define mach_type_known
+ # endif

@@ -1,0 +1,165 @@
+--- guile-1.6.0/libguile/continuations.h.ia64	Mon Oct  8 16:17:35 2001
++++ guile-1.6.0/libguile/continuations.h	Tue Dec  3 11:38:29 2002
+@@ -45,10 +45,6 @@
+ 
+ #include "libguile/__scm.h"
+ 
+-#ifdef __ia64__
+-#include <sys/ucontext.h>
+-extern unsigned long  __libc_ia64_register_backing_store_base;
+-#endif
+ 
+ 
+ /* a continuation SCM is a non-immediate pointing to a heap cell with:
+@@ -66,11 +62,6 @@
+   SCM throw_value;
+   jmp_buf jmpbuf;
+   SCM dynenv;
+-#ifdef __ia64__
+-  ucontext_t ctx;
+-  void *backing_store;
+-  unsigned long backing_store_size;
+-#endif /* __ia64__ */
+   SCM_STACKITEM *base;      /* base of the live stack, before it was saved.  */
+   size_t num_stack_items;   /* size of the saved stack.  */
+   unsigned long seq;        /* dynamic root identifier.  */
+--- guile-1.6.0/libguile/continuations.c.ia64	Tue Dec  3 11:37:34 2002
++++ guile-1.6.0/libguile/continuations.c	Tue Dec  3 11:38:14 2002
+@@ -73,12 +73,6 @@
+ 
+   scm_gc_mark (continuation->throw_value);
+   scm_mark_locations (continuation->stack, continuation->num_stack_items);
+-#ifdef __ia64__
+-  if (continuation->backing_store)
+-    scm_mark_locations (continuation->backing_store, 
+-                        continuation->backing_store_size / 
+-                        sizeof (SCM_STACKITEM));
+-#endif /* __ia64__ */
+   return continuation->dynenv;
+ }
+ 
+@@ -93,10 +87,6 @@
+   size_t bytes_free = sizeof (scm_t_contregs)
+     + extra_items * sizeof (SCM_STACKITEM);
+ 
+-#ifdef __ia64__
+-  bytes_free += continuation->backing_store_size;
+-  scm_must_free (continuation->backing_store);
+-#endif /* __ia64__ */ 
+   scm_must_free (continuation);
+   return bytes_free;
+ }
+@@ -114,16 +104,6 @@
+   return 1;
+ }
+ 
+-#ifdef __ia64__
+-struct rv
+-{
+-  long retval;
+-  long first_return;
+-};
+-extern struct rv getcontext (ucontext_t *);
+-extern int setcontext (ucontext_t *);
+-#endif /* __ia64__ */
+-
+ /* this may return more than once: the first time with the escape
+    procedure, then subsequently with the value to be passed to the
+    continuation.  */
+@@ -136,9 +116,6 @@
+   scm_t_contregs *rootcont = SCM_CONTREGS (scm_rootcont);
+   long stack_size;
+   SCM_STACKITEM * src;
+-#ifdef __ia64__
+-  struct rv rv;
+-#endif
+ 
+   SCM_ENTER_A_SECTION;
+   SCM_FLUSH_REGISTER_WINDOWS;
+@@ -162,28 +139,6 @@
+ #endif
+   memcpy (continuation->stack, src, sizeof (SCM_STACKITEM) * stack_size);
+ 
+-#ifdef __ia64__
+-  rv = getcontext (&continuation->ctx);
+-  if (rv.first_return)
+-    {
+-      continuation->backing_store_size = 
+-        continuation->ctx.uc_mcontext.sc_ar_bsp - 
+-        __libc_ia64_register_backing_store_base;
+-      continuation->backing_store = NULL;
+-      continuation->backing_store = 
+-        scm_must_malloc (continuation->backing_store_size, FUNC_NAME);
+-      memcpy (continuation->backing_store, 
+-              (void *) __libc_ia64_register_backing_store_base, 
+-              continuation->backing_store_size);
+-      *first = 1;
+-      return cont;
+-    }
+-  else
+-    {
+-      *first = 0;
+-      return continuation->throw_value;
+-    }
+-#else /* !__ia64__ */
+   if (setjmp (continuation->jmpbuf))
+     {
+       *first = 0;
+@@ -194,7 +149,6 @@
+       *first = 1;
+       return cont;
+     }
+-#endif /* !__ia64__ */
+ }
+ #undef FUNC_NAME
+ 
+@@ -235,14 +189,7 @@
+ #endif
+ 
+   continuation->throw_value = val;
+-#ifdef __ia64__
+-  memcpy ((void *) __libc_ia64_register_backing_store_base,
+-          continuation->backing_store,
+-          continuation->backing_store_size);
+-  setcontext (&continuation->ctx);
+-#else
+   longjmp (continuation->jmpbuf, 1);
+-#endif
+ }
+ 
+ 
+--- guile-1.6.0/libguile/gc.c.ia64	Tue Dec  3 11:37:37 2002
++++ guile-1.6.0/libguile/gc.c	Tue Dec  3 11:37:54 2002
+@@ -52,11 +52,6 @@
+ #include <errno.h>
+ #include <string.h>
+ 
+-#ifdef __ia64__
+-#include <ucontext.h>
+-extern unsigned long __libc_ia64_register_backing_store_base;
+-#endif
+-
+ #include "libguile/_scm.h"
+ #include "libguile/eval.h"
+ #include "libguile/stime.h"
+@@ -1032,20 +1027,7 @@
+ scm_t_c_hook scm_after_sweep_c_hook;
+ scm_t_c_hook scm_after_gc_c_hook;
+ 
+-#ifdef __ia64__
+-# define SCM_MARK_BACKING_STORE() do {                                \
+-    ucontext_t ctx;                                                   \
+-    SCM_STACKITEM * top, * bot;                                       \
+-    getcontext (&ctx);                                                \
+-    scm_mark_locations ((SCM_STACKITEM *) &ctx.uc_mcontext,           \
+-      ((size_t) (sizeof (SCM_STACKITEM) - 1 + sizeof ctx.uc_mcontext) \
+-       / sizeof (SCM_STACKITEM)));                                    \
+-    bot = (SCM_STACKITEM *) __libc_ia64_register_backing_store_base;  \
+-    top = (SCM_STACKITEM *) ctx.uc_mcontext.sc_ar_bsp;                \
+-    scm_mark_locations (bot, top - bot); } while (0)
+-#else
+ # define SCM_MARK_BACKING_STORE()
+-#endif
+ 
+ void
+ scm_igc (const char *what)
