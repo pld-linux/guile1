@@ -1,29 +1,29 @@
 Summary:	GNU Extension language
 Summary(es):	Lenguaje de extensión de la GNU
 Summary(ja):	¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Î³ÈÄ¥¤Î¤¿¤á¤Î GNU ¤Ë¤è¤ë Scheme ¤Î¼ÂÁõ
-Summary(pl):	GNU Extension language
+Summary(pl):	Jêzyk GNU Extension language
 Summary(pt_BR):	Linguagem de extensão da GNU
 Summary(ru):	ñÚÙË ÒÁÓÛÉÒÅÎÉÊ GNU
 Summary(uk):	íÏ×Á ÒÏÚÛÉÒÅÎØ GNU
 Name:		guile
-Version:	1.4.1
-Release:	5
+Version:	1.6.1
+Release:	1
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/pub/gnu/guile/%{name}-%{version}.tar.gz
-URL:		http://www.gnu.org/software/guile/guile.html
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
-Patch3:		%{name}-sizet.patch
-Patch4:		%{name}-axp.patch
-BuildRequires:	libltdl-devel
+Patch3:		%{name}-axp.patch
+URL:		http://www.gnu.org/software/guile/guile.html
+BuildRequires:	autoconf >= 2.53
+BuildRequires:	automake >= 1.6
+BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
+BuildRequires:	texinfo
 Requires:	umb-scheme
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake >= 1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libguile9
 
@@ -44,7 +44,10 @@ GUILE (GNU's Ubiquitous Intelligent Language for Extension) ¤Ï Scheme
 ¥Þ¥·¥óÈó°ÍÂ¸¤Î¼Â¹Ô´Ä¶­¤Ç¡¢¥×¥í¥°¥é¥à¤Î³ÈÄ¥À­¤òÄó¶¡¤·¤Þ¤¹¡£
 
 %description -l pl
-Guile jest implementacj± Scheme napisan± w C.
+Guile jest przeno¶n±, daj±c± siê wbudowaæ implementacj± Scheme
+napisan± w C. Guile udostêpnia platformê wykonywania niezale¿n± od
+sprzêtu, która mo¿e byæ do³±czona jako biblioteka przy tworzeniu
+rozszerzalnych programów.
 
 %description -l pt_BR
 Guile é um implementação de Scheme portável e embutível escrita em C.
@@ -135,22 +138,21 @@ Bibliotecas estáticas para desenvolvimento com guile
 # if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
 #%patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
-#rm -f missing
-#libtoolize --copy --force
-#aclocal -I guile-config
-#autoconf
-#automake -a -c -f
-#cd guile-readline
-#libtoolize --copy --force
-#aclocal
-#autoconf
-#automake -a -c -f
-#cd -
+%{__libtoolize}
+%{__aclocal} -I guile-config
+%{__autoconf}
+%{__automake}
+cd guile-readline
+%{__aclocal} -I ../guile-config
+%{__autoconf}
+# DON'T USE --force HERE - it would break build
+automake -a -c --foreign
+cd ..
 %configure \
-	--with-threads
+	--with-threads \
+	--enable-fast-install
 
 %{__make}
 #	THREAD_LIBS_LOCAL=`pwd`/qt/.libs/libqthreads.so
@@ -163,15 +165,8 @@ install -d $RPM_BUILD_ROOT{%{_datadir}/guile/site,%{_libdir}/guile}
 	DESTDIR=$RPM_BUILD_ROOT \
 	aclocaldir=%{_aclocaldir}
 
-# this is a hack :-)
-# libtool while installing links libguilereadline with installed libguile, so (in most
-# cases) we get libguilereadline.so linked with (old) libguile.so.9 (!!!) and we cannot
-# install it, so I had to fix it :-) (filon)
-cd guile-readline
-%{__cc} -shared readline.lo -Wl,--rpath -Wl,%{_libdir} ../libguile/.libs/libguile.so \
--L%{_libdir} -lreadline -lncurses -Wl,-soname -Wl,libguilereadline.so.0 \
--o $RPM_BUILD_ROOT%{_libdir}/libguilereadline.so.0.0.1
-cd -
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -182,19 +177,18 @@ cd -
 %postun devel
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS HACKING NEWS README THANKS
 %attr(755,root,root) %{_bindir}/guile
+%attr(755,root,root) %{_bindir}/guile-tools
 %attr(755,root,root) %{_libdir}/*.so.*.*
 %{_libdir}/guile
 %{_datadir}/guile
 
 %files devel
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README
+%doc ChangeLog HACKING
 %attr(755,root,root) %{_bindir}/guile-config
 %attr(755,root,root) %{_bindir}/guile-snarf
 %attr(755,root,root) %{_libdir}/*.so
