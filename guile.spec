@@ -2,7 +2,7 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.3
-Release:	7
+Release:	8
 Copyright:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
@@ -59,7 +59,6 @@ Biblioteka statyczna Guile
 
 %build
 %configure \
-	--prefix=%{_prefix} \
 	--enable-dynamic-linking
 make
 
@@ -108,6 +107,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*.a
 
 %changelog
+* Mon Jun 07 1999 Jan Rêkorajski <baggins@pld.org.pl>
+  [1.3-8]
+- spec cleanup
+
 * Fri May 21 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-7]
 - spec writted by me,
