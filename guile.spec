@@ -66,13 +66,13 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/share/guile/site
+install -d $RPM_BUILD_ROOT%{_datadir}/guile/site
 
 make install prefix=$RPM_BUILD_ROOT/usr/
 
 strip $RPM_BUILD_ROOT%{_libdir}/*.so.*.*
 
-ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT/usr/share/guile/slib
+ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT%{_datadir}/guile/slib
 
 gzip -9fn $RPM_BUILD_ROOT%{_infodir}/data-rep* \
 	AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
@@ -95,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) /usr/bin/*
 %attr(755,root,root) %{_libdir}/*.so.*.*
-/usr/share/guile
+%{_datadir}/guile
 
 %files devel
 %defattr(644,root,root,755)
