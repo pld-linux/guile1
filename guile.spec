@@ -12,7 +12,6 @@ Patch1:		guile-ansi.patch
 Patch2:		guile-scm.patch
 Patch3:		guile-info.pach
 Prereq:		/sbin/install-info
-Conflicts:	glibc <= 2.0.7
 Requires:	umb-scheme
 Buildroot:	/tmp/%{name}-%{version}-root
 
