@@ -64,10 +64,10 @@ Guile - це переносима та вбудовувана реал╕зац╕я мови Scheme написана
 
 %package devel
 Summary:	Guile's header files, etc
-Summary(es):	Bibliotecas de Guile, archivos de inclusiСn, etc.
+Summary(es):	Bibliotecas de Guile, archivos de inclusiСn, etc
 Summary(ja):	GUILE Ёхд╔ю╜╔И╔╓╔ж╔И╔Ймя╓н╔И╔╓╔ж╔И╔Й╓х╔ь╔ц╔ю╔у╔║╔╓╔К
 Summary(pl):	Pliki nagЁСwkowe i dokumentacja Guile
-Summary(pt_BR):	Bibliotecas da Guile, arquivos de inclusЦo, etc.
+Summary(pt_BR):	Bibliotecas da Guile, arquivos de inclusЦo, etc
 Summary(ru):	Файлы для разработки программ с Guile
 Summary(uk):	Файли для розробки програм з Guile
 Group:		Development/Libraries
