@@ -28,7 +28,6 @@ Group:		Development/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	m4
-Prereq:		/usr/sbin/fix-info-dir
 Requires:	%{name} = %{version}
 
 %description devel
@@ -76,10 +75,10 @@ gzip -9nf $RPM_BUILD_ROOT%{_infodir}/data-rep* \
 %postun -p /sbin/ldconfig
 
 %post devel
-%{_sbindir}/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+[ -x /usr/sbin/fix-info-dir ] && /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun devel
-%{_sbindir}/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+[ -x /usr/sbin/fix-info-dir ] && /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
