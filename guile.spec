@@ -58,6 +58,7 @@ Biblioteka statyczna Guile
 %patch3 -p1
 
 %build
+autoconf
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure %{_target} \
 	--prefix=/usr \
