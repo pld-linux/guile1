@@ -2,10 +2,11 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.4 
-Release:	4
+Release:	5
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
+Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
 Source0:	ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.pach
@@ -27,6 +28,7 @@ Guile jest implementacj± Scheme napisan± w C.
 Summary:	Guile's header files, etc
 Summary(pl):	Pliki nag³ówkowe i dokumentacja Guile
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	m4
@@ -42,6 +44,7 @@ Pliki nag³ówkowe i dokumentacja Guile.
 Summary:	Guile static libraries
 Summary(pl):	Biblioteka statyczna Guile
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -58,7 +61,6 @@ Biblioteka statyczna Guile.
 %patch1 -p1
 
 %build
-LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-dynamic-linking
 %{__make}
@@ -71,10 +73,7 @@ install -d $RPM_BUILD_ROOT%{_datadir}/guile/site
 	DESTDIR=$RPM_BUILD_ROOT \
 	aclocaldir=%{_aclocaldir}
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/*.so.*.*
-
-gzip -9nf $RPM_BUILD_ROOT%{_infodir}/data-rep* \
-	AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
+gzip -9nf AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
