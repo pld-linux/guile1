@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	tests	# don't perform ./check-guile
+#
 Summary:	GNU Extension language
 Summary(es):	Lenguaje de extensión de la GNU
 Summary(ja):	¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Î³ÈÄ¥¤Î¤¿¤á¤Î GNU ¤Ë¤è¤ë Scheme ¤Î¼ÂÁõ
@@ -7,11 +11,11 @@ Summary(ru):	ñÚÙË ÒÁÓÛÉÒÅÎÉÊ GNU
 Summary(uk):	íÏ×Á ÒÏÚÛÉÒÅÎØ GNU
 Name:		guile
 Version:	1.6.4
-Release:	4
+Release:	5
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
-Source0:	ftp://ftp.gnu.org/pub/gnu/guile/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
 # Source0-md5: a4aceb5f185878c1de4e8aa7c38b6d1d
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
@@ -23,6 +27,8 @@ Patch6:		%{name}-ppc64.patch
 Patch7:		%{name}-unknown_arch.patch
 Patch8:		%{name}-realloc.patch
 Patch9:		%{name}-stack-end.patch
+Patch10:	%{name}-ttyname.patch
+Patch11:	%{name}-mktemp.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
@@ -143,11 +149,15 @@ Bibliotecas estáticas para desenvolvimento com guile
 %patch1 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
+# it comes from RH, was meant to remove usage of (g)libc internal symbols(?)
+# - but it only causes guile memory fault during build
+#%patch5 -p1
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
+%patch10 -p1
+%patch11 -p0
 
 # I wouldn't apply it, it breaks other programs, but I have fixed it, so
 # if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
@@ -169,7 +179,8 @@ cd ..
 	--enable-fast-install
 
 %{__make}
-#	THREAD_LIBS_LOCAL=`pwd`/qt/.libs/libqthreads.so
+
+%{?with_tests:./check-guile}
 
 %install
 rm -rf $RPM_BUILD_ROOT
