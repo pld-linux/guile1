@@ -2,14 +2,15 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.3
-Release:	3d
+Release:	4
 Copyright:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
 Source:		ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
-Patch:		%{name}-libtool.patch
+Patch:		guile-libtool.patch
 Prereq:		/sbin/install-info
 Conflicts:	glibc <= 2.0.7
+Requires:	umb-scheme
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -22,8 +23,8 @@ Guile jest implementacj± Scheme napisan± w C.
 %package	devel
 %package devel
 Summary:	Guile's header files, etc.
-Group:		Development/Languages
-Group(pl):	Programowanie/Jêzyki
+Summary(pl):	Pliki nag³ówkowe i dokumentacja Guile.
+Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
@@ -36,8 +37,8 @@ Pliki nag³ówkowe i dokumentacja Guile.
 %package	static
 Summary:	Guile static libraries
 Summary(pl):	Biblioteka statyczna Guile
-Group:		Development/Languages
-Group(pl):	Programowanie/Jêzyki
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -51,7 +52,7 @@ Biblioteka statyczna Guile
 %patch -p1
 
 %build
-CFLAGS=$RPM_OPT_FLAGS LDFLAGS=-s \
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
 ./configure \
 	--prefix=/usr \
 	--enable-dynamic-linking
@@ -76,32 +77,28 @@ bzip2 -9 AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644,root,root,755)
-
 %attr(755,root,root) /usr/bin/*
-%attr(755,root,root) /usr/lib/*.so.*
-
-%dir /usr/share/guile
-/usr/share/guile/*
+%attr(755,root,root) /usr/lib/*.so.*.*
+%attr(644,root,root) /usr/share/guile
 
 %files devel
 %defattr(644,root,root,755)
 %doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.bz2 
 
-/usr/include/*.h
-
-%dir /usr/include/guile
-/usr/include/guile/*
-
-%dir /usr/include/libguile
-/usr/include/libguile/*
-
+/usr/include/*
 %attr(755,root,root) /usr/lib/*.so
 %defattr(644,root,root,755)
 %attr(644,root,root) /usr/lib/*.a
 %attr(644,root,root) /usr/lib/*.a
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-5]
+- simplifications in %files,
+- Group in devel and static changed to Development/Libraries.
+
+* Sun Dec 13 1998 Wojtek ¦lusarczyk <wojtek@shadow.eu.org>
+  [1.3-2d]
+- major changes -- for PLD. 
+
 * Wed Dec  9 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-2]
 - added using LDFLAGS="-s" to ./configure enviroment,
@@ -146,7 +143,7 @@ rm -rf $RPM_BUILD_ROOT
 - all rewrited for using Buildroot,
 - added %postun,
 - removed making buid logs,
-[1.2-2]
+- removed "--inclededir", added "--enable-dynamic-linking" to configure
   parameters,
 - added stripping shared libs and /usr/bin/guile,
 - added "Requires: /bin/sh" (for guile-snarf) in guile package and
