@@ -1,41 +1,57 @@
-Summary:     GNU Extension language
-Name:        guile
-Version:     1.3
-Release:     2
-Copyright:   GPL
-Group:       Development/Languages
-Source:      ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
-Patch0:      guile-libtool.patch
-Requires:    umb-scheme
-Buildroot:   /tmp/%{name}-%{version}-root
+Summary:	GNU Extension language
+Summary(pl):	GNU Extension language
+Name:		guile
+Version:	1.3
+Release:	3d
+Copyright:	GPL
+Group:		Development/Languages
+Group(pl):	Programowanie/Jêzyki
+Source:		ftp://prep.ai.mit.edu/pub/gnu/%{name}-%{version}.tar.gz
+Patch:		%{name}-libtool.patch
+Prereq:		/sbin/install-info
+Conflicts:	glibc <= 2.0.7
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
 Guile, a portable, embeddable Scheme implementation written in C. Guile
 provides a machine independent execution platform that can be linked in as a
 library when building extensible programs.
+
+%description -l pl
+Guile jest implementacj± Scheme napisan± w C. 
+%package	devel
 %package devel
-Summary:     Guile's libraries, header files, etc.
-Group:       Development/Languages
-Requires:    m4, %{name} = %{version}
+Summary:	Guile's header files, etc.
+Group:		Development/Languages
+Group(pl):	Programowanie/Jêzyki
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
 
 %description devel
 What's needed to develop apps linked w/ guile
 
-%package static
-Summary:     Guile static libraries
-Group:       Development/Languages
-Requires:    %{name}-devel = %{version}
+%description -l pl devel
+Pliki nag³ówkowe i dokumentacja Guile.
+
+%package	static
+Summary:	Guile static libraries
+Summary(pl):	Biblioteka statyczna Guile
+Group:		Development/Languages
+Group(pl):	Programowanie/Jêzyki
+Requires:	%{name}-devel = %{version}
 
 %description static
-Guile static libraries.
+Guile static library.
+
+%description -l pl static
+Biblioteka statyczna Guile
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -p1
 
 %build
-CFLAGS=$RPM_OPT_FLAGS LDFLAGS="-s" \
+CFLAGS=$RPM_OPT_FLAGS LDFLAGS=-s \
 ./configure \
 	--prefix=/usr \
 	--enable-dynamic-linking
@@ -46,9 +62,12 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/usr/share/guile/site
 
 make install prefix=$RPM_BUILD_ROOT/usr/
-strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
+
+strip $RPM_BUILD_ROOT/usr/lib/*.so.*.*
 
 ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT/usr/share/guile/slib
+
+bzip2 -9 AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -57,23 +76,36 @@ ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT/usr/share/guile/slib
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(644, root, root, 755)
-%attr(755, root, root) /usr/bin/*
-%attr(755, root, root) /usr/lib/lib*.so.*.*
-/usr/share/guile
+%defattr(644,root,root,755)
+
+%attr(755,root,root) /usr/bin/*
+%attr(755,root,root) /usr/lib/*.so.*
+
+%dir /usr/share/guile
+/usr/share/guile/*
 
 %files devel
-%defattr(644, root, root, 755)
-%doc AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README TODO
+%defattr(644,root,root,755)
+%doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.bz2 
+
 /usr/include/*.h
-/usr/include/guile
-/usr/include/libguile
-/usr/lib/lib*so
+
+%dir /usr/include/guile
+/usr/include/guile/*
+
+%dir /usr/include/libguile
+/usr/include/libguile/*
+
+%attr(755,root,root) /usr/lib/*.so
 %defattr(644,root,root,755)
 %attr(644,root,root) /usr/lib/*.a
-%attr(644, root, root) /usr/lib/lib*.a
+%attr(644,root,root) /usr/lib/*.a
 * Mon Apr 19 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-5]
+* Wed Dec  9 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [1.3-2]
+- added using LDFLAGS="-s" to ./configure enviroment,
+- added guile-libtool.patch for correct linking shared libraries.
 
 * Sun Nov  1 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [1.3-1]
@@ -105,12 +137,7 @@ rm -rf $RPM_BUILD_ROOT
   [1.2-3]
 - added %attr(-, root, root) for %doc, 
 - in %post, %postun ldconfig runed as parameter "-p",
-* Mon Jan 26 1998 Marc Ewing <marc@redhat.com>
-  [1.2-4]
-- Started with spec from Tomasz Koczko <kloczek@idk.com.pl>
-- added slib link
-
-* Thu Sep 18 1997 Tomasz Koczko <kloczek@idk.com.pl>
+- removed /bin/sh from requires,
 - added %description,
 - changes in %files.
 
@@ -118,8 +145,8 @@ rm -rf $RPM_BUILD_ROOT
   [1.2-2]
 - all rewrited for using Buildroot,
 - added %postun,
-* Fri Jul 11 1997 Tomasz Koczko <kloczek@rudy.mif.pg.gda.pl>  (1.2-2)
-  [1.2-2]
+- removed making buid logs,
+[1.2-2]
   parameters,
 - added stripping shared libs and /usr/bin/guile,
 - added "Requires: /bin/sh" (for guile-snarf) in guile package and
