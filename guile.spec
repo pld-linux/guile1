@@ -7,7 +7,7 @@ Summary(ru):	Язык расширений GNU
 Summary(uk):	Мова розширень GNU
 Name:		guile
 Version:	1.6.4
-Release:	1
+Release:	2
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
