@@ -10,13 +10,13 @@ Summary(pt_BR):	Linguagem de extensЦo da GNU
 Summary(ru):	Язык расширений GNU
 Summary(uk):	Мова розширень GNU
 Name:		guile
-Version:	1.6.6
+Version:	1.6.7
 Release:	1
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
-# Source0-md5:	99419494fbbcc257be41309c2a9284f0
+# Source0-md5:	c2ff2a2231f0cbb2e838dd8701a587c5
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
@@ -193,7 +193,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS HACKING NEWS README THANKS
 %attr(755,root,root) %{_bindir}/guile
 %attr(755,root,root) %{_bindir}/guile-tools
-%attr(755,root,root) %{_libdir}/*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
 %{_libdir}/guile
 %{_datadir}/guile
 
@@ -202,11 +202,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog HACKING
 %attr(755,root,root) %{_bindir}/guile-config
 %attr(755,root,root) %{_bindir}/guile-snarf
-%attr(755,root,root) %{_libdir}/*.so
-%{_libdir}/*.la
-%{_infodir}/*info*
-%{_includedir}/*
-%{_aclocaldir}/*
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
+%{_infodir}/*.info*
+%{_includedir}/*guile*
+%{_aclocaldir}/guile.m4
 
 %files static
 %defattr(644,root,root,755)
