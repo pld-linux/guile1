@@ -60,6 +60,7 @@ Biblioteka statyczna Guile
 %patch4 -p1
 
 %build
+LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-dynamic-linking
 make
