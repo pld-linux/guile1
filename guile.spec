@@ -2,13 +2,12 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.3.2
-Release:	1
+Release:	2
 Copyright:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
 Source:		ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
 Patch0:		guile-info.pach
-Prereq:		/sbin/install-info
 Requires:	umb-scheme
 Buildroot:	/tmp/%{name}-%{version}-root
 
@@ -26,6 +25,7 @@ Summary(pl):	Pliki nag³ówkowe i dokumentacja Guile.
 Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
 Requires:	m4
+Prereq:		/usr/sbin/fix-info-dir
 Requires:	%{name} = %{version}
 
 %description devel
@@ -72,12 +72,10 @@ gzip -9fn $RPM_BUILD_ROOT%{_infodir}/data-rep* \
 %postun -p /sbin/ldconfig
 
 %post devel
-/sbin/install-info %{_infodir}/data-rep.info.gz /etc/info-dir
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%preun devel
-if [ "$1" = "0" ]; then
-	/sbin/install-info --delete %{_infodir}/data-rep.info.info.gz /etc/info-dir
-fi
+%postun devel
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -101,4 +99,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%{_libdir}/lib*.a
