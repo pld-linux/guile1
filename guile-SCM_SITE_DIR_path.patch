@@ -20,3 +20,14 @@
  subpkgdata_DATA = $(ice9_sources)
  ETAGS_ARGS = $(subpkgdata_DATA)
  
+--- guile-1.4.1/guile-readline/Makefile.am~	Mon May 13 23:36:30 2002
++++ guile-1.4.1/guile-readline/Makefile.am	Wed May 15 21:26:36 2002
+@@ -41,7 +41,7 @@
+ 
+ pkginclude_HEADERS = readline.h
+ 
+-ice9dir = $(datadir)/guile/$(VERSION)/ice-9
++ice9dir = $(datadir)/guile/ice-9
+ ice9_DATA = readline.scm
+ 
+ snarfcppopts = $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
