@@ -58,7 +58,7 @@ Biblioteka statyczna Guile
 LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-dynamic-linking
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
