@@ -2,7 +2,7 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.4
-Release:	11
+Release:	12
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -68,17 +68,16 @@ Biblioteka statyczna Guile.
 %patch6 -p1
 
 %build
-rm -f missing
-libtoolize --copy --force
-aclocal -I .
-autoconf
-automake -a -c -f
-(cd guile-readline
-aclocal
-autoconf
-automake -a -c -f)
-%configure \
-	--enable-dynamic-linking
+#rm -f missing
+#libtoolize --copy --force
+#aclocal -I .
+#autoconf
+#automake -a -c -f
+#(cd guile-readline
+#aclocal
+#autoconf
+#automake -a -c -f)
+%configure2_13
 %{__make}
 
 %install
