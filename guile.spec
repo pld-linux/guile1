@@ -2,7 +2,7 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.4 
-Release:	9
+Release:	10
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -16,6 +16,7 @@ Requires:	umb-scheme
 BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	libguile9
 
 %description
 Guile, a portable, embeddable Scheme implementation written in C.
@@ -36,6 +37,7 @@ Requires:	m4
 Requires:	%{name} = %{version}
 Requires:	ncurses-devel >= 5.2
 Requires:	readline-devel >= 4.2
+Obsoletes:	libguile9-devel
 
 %description devel
 What's needed to develop apps linked w/ guile
