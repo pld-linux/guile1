@@ -1,0 +1,11 @@
+--- guile-1.6.4/libguile/fports.c.orig	2002-12-07 22:41:31.000000000 +0000
++++ guile-1.6.4/libguile/fports.c	2004-07-25 17:19:02.609575556 +0000
+@@ -505,7 +505,7 @@
+       fdes = (SCM_FSTREAM (exp))->fdes;
+       
+ #ifdef HAVE_TTYNAME
+-      if (isatty (fdes))
++      if (isatty (fdes) && (ttyname (fdes) != NULL))
+ 	scm_puts (ttyname (fdes), port);
+       else
+ #endif /* HAVE_TTYNAME */
