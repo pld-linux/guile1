@@ -17,6 +17,10 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
 Patch3:		%{name}-noldflagsinconfig.patch
+Patch4:		%{name}-ac_alloca_test.patch
+Patch5:		%{name}-ia64.patch
+Patch6:		%{name}-ppc64.patch
+Patch7:		%{name}-unknown_arch.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
@@ -136,6 +140,10 @@ Bibliotecas estáticas para desenvolvimento com guile
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 # I wouldn't apply it, it breaks other programs, but I have fixed it, so
 # if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
