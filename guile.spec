@@ -198,7 +198,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/guile-config
 %attr(755,root,root) %{_bindir}/guile-snarf
 %attr(755,root,root) %{_libdir}/*.so
-%attr(755,root,root) %{_libdir}/*.la
+%{_libdir}/*.la
 %{_infodir}/*info*
 %{_includedir}/*
 %{_aclocaldir}/*
