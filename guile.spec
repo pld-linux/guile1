@@ -74,18 +74,18 @@ strip $RPM_BUILD_ROOT/usr/lib/*.so.*.*
 
 ln -s ../../lib/umb-scheme/slib $RPM_BUILD_ROOT/usr/share/guile/slib
 
-gzip -9fn $RPM_BUILD_ROOT/usr/info/data-rep* \
+gzip -9fn $RPM_BUILD_ROOT%{_infodir}/data-rep* \
 	AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %post devel
-/sbin/install-info /usr/info/data-rep.info.gz /etc/info-dir
+/sbin/install-info %{_infodir}/data-rep.info.gz /etc/info-dir
 
 %preun devel
 if [ "$1" = "0" ]; then
-	/sbin/install-info --delete /usr/info/data-rep.info.info.gz /etc/info-dir
+	/sbin/install-info --delete %{_infodir}/data-rep.info.info.gz /etc/info-dir
 fi
 
 %clean
@@ -100,7 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc {AUTHORS,ChangeLog,GUILE-VERSION,HACKING,NEWS,README}.gz
-/usr/info/*info*
+%{_infodir}/*info*
 /usr/include/*
 %attr(755,root,root) /usr/lib/*.so
 
