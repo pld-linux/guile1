@@ -2,29 +2,30 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.3.4
-Release:	2
-Copyright:	GPL
+Release:	3
+License:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
-Source:		ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
+Source0:	ftp://prep.ai.mit.edu/pub/gnu/guile/%{name}-%{version}.tar.gz
 Patch0:		guile-info.pach
 Requires:	umb-scheme
 BuildRequires:	ncurses-devel >= 5.0
-BuildRequires:	readline-devel
+BuildRequires:	readline-devel >= 4.1
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
 Guile, a portable, embeddable Scheme implementation written in C. Guile
-provides a machine independent execution platform that can be linked in as a
-library when building extensible programs.
+provides a machine independent execution platform that can be linked in as
+a library when building extensible programs.
 
 %description -l pl
-Guile jest implementacj± Scheme napisan± w C. 
+Guile jest implementacj± Scheme napisan± w C.
 
 %package devel
-Summary:	Guile's header files, etc.
-Summary(pl):	Pliki nag³ówkowe i dokumentacja Guile.
+Summary:	Guile's header files, etc
+Summary(pl):	Pliki nag³ówkowe i dokumentacja Guile
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	m4
 Prereq:		/usr/sbin/fix-info-dir
@@ -40,6 +41,7 @@ Pliki nag³ówkowe i dokumentacja Guile.
 Summary:	Guile static libraries
 Summary(pl):	Biblioteka statyczna Guile
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
@@ -67,17 +69,17 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/*.so.*.*
 
-gzip -9fn $RPM_BUILD_ROOT%{_infodir}/data-rep* \
+gzip -9nf $RPM_BUILD_ROOT%{_infodir}/data-rep* \
 	AUTHORS ChangeLog GUILE-VERSION HACKING NEWS README 
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %post devel
-/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+%{_sbindir}/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun devel
-/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+%{_sbindir}/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
