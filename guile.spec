@@ -2,7 +2,7 @@ Summary:	GNU Extension language
 Summary(pl):	GNU Extension language
 Name:		guile
 Version:	1.4 
-Release:	6
+Release:	7
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -13,8 +13,8 @@ Patch0:		%{name}-info.pach
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-std_headers.patch
 Requires:	umb-scheme
-BuildRequires:	ncurses-devel >= 5.0
-BuildRequires:	readline-devel >= 4.1
+BuildRequires:	ncurses-devel >= 5.2
+BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
