@@ -10,7 +10,7 @@ diff -Nru guile-1.3/doc/data-rep.texi guile-1.3.new/doc/data-rep.texi
  @direntry
 -* data-rep: (data-rep).  Data Representation in Guile --- how to use
 -                         Guile objects in your C code.
-+* data-rep: (data-rep)			Data Representation in Guile - how to
++* data-rep: (data-rep).			Data Representation in Guile - how to
 +					use Guile objects in your C code
  @end direntry
  
