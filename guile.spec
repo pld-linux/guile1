@@ -10,13 +10,13 @@ Summary(pt_BR):	Linguagem de extensЦo da GNU
 Summary(ru):	Язык расширений GNU
 Summary(uk):	Мова розширень GNU
 Name:		guile
-Version:	1.6.5
+Version:	1.6.6
 Release:	1
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
-# Source0-md5:	5fc12555279d2062715877b7304a9b36
+# Source0-md5:	99419494fbbcc257be41309c2a9284f0
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
