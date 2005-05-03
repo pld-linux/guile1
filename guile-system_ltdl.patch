@@ -48,14 +48,14 @@ diff -u -r1.2 guile-ltdl.h
  
  void            scm_lt_dlpreload_default (const scm_lt_dlsymlist *preloads);
 
---- guile-1.6.7/libguile/Makefile.am~	2004-12-19 06:18:19.000000000 +0000
-+++ guile-1.6.7/libguile/Makefile.am	2005-05-03 00:57:54.264772872 +0000
-@@ -36,7 +36,7 @@
- noinst_PROGRAMS = guile_filter_doc_snarfage
+--- guile-1.6.7/libguile-ltdl/Makefile.am~	2005-05-03 15:00:59.150806944 +0000
++++ guile-1.6.7/libguile-ltdl/Makefile.am	2005-05-03 15:01:40.853467176 +0000
+@@ -37,6 +37,8 @@
+ EXTRA_HEADERS = guile-ltdl.h raw-ltdl.h
+ EXTRA_DIST = raw-ltdl.c $(EXTRA_HEADERS)
  
- guile_SOURCES = guile.c
--guile_LDADD = libguile.la @abs_top_builddir@/libguile-ltdl/libguile-ltdl.la
-+guile_LDADD = libguile.la @abs_top_builddir@/libguile-ltdl/libguile-ltdl.la -lltdl
- guile_LDFLAGS = @DLPREOPEN@
- 
- guile_filter_doc_snarfage_SOURCES = c-tokenize.c
++LIBS = -lltdl
++
+ lib_LTLIBRARIES = libguile-ltdl.la
+ libguile_ltdl_la_SOURCES = guile-ltdl.c
+ #libguile_ltdl_la_DEPENDENCIES = 
