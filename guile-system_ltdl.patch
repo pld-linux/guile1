@@ -1,0 +1,61 @@
+Index: guile-ltdl.c
+===================================================================
+RCS file: /cvsroot/guile/guile/guile-core/libguile-ltdl/guile-ltdl.c,v
+retrieving revision 1.2
+diff -u -r1.2 guile-ltdl.c
+--- guile-1.6.7/libguile-ltdl/guile-ltdl.c        9 Oct 2002 21:16:12 -0000       1.2
++++ guile-1.6.7/libguile-ltdl/guile-ltdl.c        6 Oct 2004 22:37:38 -0000
+@@ -27,21 +27,8 @@
+ 
+ #include "guile-ltdl.h"
+ 
+-#define lt_dlhandle_struct scm_i_lt_dlhandle_struct
+-#define SCM_INSERTED_DLSYMLIST_STRUCT_DECL scm_i_lt_dlsymlist_struct
+ 
+-#define LT_SCOPE static
+-#define SCMLTXT static
+-#define SCMLTSTATIC static
+-
+-#ifdef __GNUC__
+-#define SCM_UNUSED __attribute__ ((unused))
+-#else
+-#define SCM_UNUSED
+-#endif
+ 
+-#include "raw-ltdl.h"
+-#include "raw-ltdl.c"
+ 
+ void
+ scm_lt_dlpreload_default (const scm_lt_dlsymlist *preloads)
+Index: guile-ltdl.h
+===================================================================
+RCS file: /cvsroot/guile/guile/guile-core/libguile-ltdl/guile-ltdl.h,v
+retrieving revision 1.2
+diff -u -r1.2 guile-ltdl.h
+--- guile-1.6.7/libguile-ltdl/guile-ltdl.h        9 Oct 2002 21:16:18 -0000       1.2
++++ guile-1.6.7/libguile-ltdl/guile-ltdl.h        6 Oct 2004 22:37:38 -0000
+@@ -26,8 +26,10 @@
+ #ifndef SCM_LTDL_H
+ #define SCM_LTDL_H 1
+ 
+-typedef struct scm_i_lt_dlhandle_struct *scm_lt_dlhandle;
+-typedef struct scm_i_lt_dlsymlist_struct scm_lt_dlsymlist;
++#include "ltdl.h"
++
++typedef lt_dlhandle scm_lt_dlhandle;
++typedef lt_dlsymlist scm_lt_dlsymlist;
+ typedef void * scm_lt_ptr;
+ 
+ void            scm_lt_dlpreload_default (const scm_lt_dlsymlist *preloads);
+
+--- guile-1.6.7/libguile/Makefile.am~	2004-12-19 06:18:19.000000000 +0000
++++ guile-1.6.7/libguile/Makefile.am	2005-05-03 00:57:54.264772872 +0000
+@@ -36,7 +36,7 @@
+ noinst_PROGRAMS = guile_filter_doc_snarfage
+ 
+ guile_SOURCES = guile.c
+-guile_LDADD = libguile.la @abs_top_builddir@/libguile-ltdl/libguile-ltdl.la
++guile_LDADD = libguile.la @abs_top_builddir@/libguile-ltdl/libguile-ltdl.la -lltdl
+ guile_LDFLAGS = @DLPREOPEN@
+ 
+ guile_filter_doc_snarfage_SOURCES = c-tokenize.c
