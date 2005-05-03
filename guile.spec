@@ -11,7 +11,7 @@ Summary(ru):	ñÚÙË ÒÁÓÛÉÒÅÎÉÊ GNU
 Summary(uk):	íÏ×Á ÒÏÚÛÉÒÅÎØ GNU
 Name:		guile
 Version:	1.6.7
-Release:	1
+Release:	2
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
@@ -23,6 +23,7 @@ Patch2:		%{name}-SCM_SITE_DIR_path.patch
 Patch3:		%{name}-noldflagsinconfig.patch
 Patch4:		%{name}-ttyname.patch
 Patch5:		%{name}-unknown_arch.patch
+Patch6:		%{name}-system_ltdl.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
@@ -144,6 +145,7 @@ Bibliotecas estáticas para desenvolvimento com guile
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 # I wouldn't apply it, it breaks other programs, but I have fixed it, so
 # if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
