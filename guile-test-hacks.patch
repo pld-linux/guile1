@@ -1,0 +1,37 @@
+--- guile-1.8.0/test-suite/tests/numbers.test.orig	2006-02-12 14:29:32.000000000 +0100
++++ guile-1.8.0/test-suite/tests/numbers.test	2006-08-24 01:00:44.042884000 +0200
+@@ -1214,10 +1214,12 @@
+ 		 (string=? (number->string 0.25 2) "0.010")))
+     (pass-if (string=? (number->string 255.0625 16) "FF.1"))
+     (pass-if (string=? (number->string (/ 1 3) 3) "1/10"))
+-    (pass-if (or (string=? (number->string 11.33333333333333333 12)
++    (pass-if (or (or (string=? (number->string 11.33333333333333333 12)
+ 			   "B.4")
+ 		 (string=? (number->string 11.33333333333333333 12)
+-			   "B.400000000000009")))
++			   "B.400000000000009"))
++		 (string=? (number->string 11.33333333333333333 12)
++			   "B.3BBBBBBBBBBBBA6")))
+     (pass-if (or (string=? (number->string 1.324e44 16)
+ 			   "5.EFE0A14FAFEe24")
+ 		 (string=? (number->string 1.324e44 16)
+--- guile-1.8.0/test-suite/tests/popen.test.orig	2006-02-12 14:29:32.000000000 +0100
++++ guile-1.8.0/test-suite/tests/popen.test	2006-08-24 01:01:48.922938750 +0200
+@@ -82,7 +82,7 @@
+ 	   (port (with-error-to-port (cdr pair)
+ 		   (lambda ()
+ 		     (open-input-pipe
+-		      "exec 1>/dev/null; echo closed 1>&2; sleep 999")))))
++		      "exec 1>/dev/null; echo closed 1>&2; sleep 99")))))
+       (read-char (car pair)) ;; wait for child to do its thing
+       (and (char-ready? port)
+ 	   (eof-object? (read-char port))))))
+@@ -131,7 +131,7 @@
+ 	      (port (with-error-to-port (cdr pair)
+ 		      (lambda ()
+ 			(open-output-pipe
+-			 "exec 0</dev/null; echo closed 1>&2; sleep 999")))))
++			 "exec 0</dev/null; echo closed 1>&2; sleep 99")))))
+ 	 (read-char (car pair)) ;; wait for child to do its thing
+ 	 (catch 'system-error
+ 		(lambda ()
