@@ -21,9 +21,11 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
 Patch3:		%{name}-unknown_arch.patch
+Patch4:		%{name}-test-hacks.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
+BuildRequires:	gmp-devel >= 4.1
 BuildRequires:	libltdl-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
@@ -80,10 +82,10 @@ Summary(pt_BR):	Bibliotecas da Guile, arquivos de inclusão, etc
 Summary(ru):	æÁÊÌÙ ÄÌÑ ÒÁÚÒÁÂÏÔËÉ ÐÒÏÇÒÁÍÍ Ó Guile
 Summary(uk):	æÁÊÌÉ ÄÌÑ ÒÏÚÒÏÂËÉ ÐÒÏÇÒÁÍ Ú Guile
 Group:		Development/Libraries
-Requires:	m4
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	ncurses-devel >= 5.2
-Requires:	readline-devel >= 4.2
+Requires:	gmp-devel >= 4.1
+Requires:	libltdl-devel
+Requires:	m4
 Obsoletes:	libguile9-devel
 
 %description devel
@@ -140,6 +142,7 @@ Bibliotecas estáticas para desenvolvimento com guile
 %patch0 -p1
 %patch1 -p1
 %patch3 -p1
+%patch4 -p1
 
 # I wouldn't apply it, it breaks other programs, but I have fixed it, so
 # if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
