@@ -1,0 +1,11 @@
+--- guile-1.8.1/libguile/Makefile.am.orig	2006-10-20 00:03:10.000000000 +0000
++++ guile-1.8.1/libguile/Makefile.am	2006-10-20 00:03:29.000000000 +0000
+@@ -174,7 +174,7 @@
+ 	         private-gc.h
+ 
+ libguile_la_DEPENDENCIES = @LIBLOBJS@
+-libguile_la_LIBADD = @LIBLOBJS@
++libguile_la_LIBADD = @LIBLOBJS@ -lpthread
+ libguile_la_LDFLAGS = @LTLIBINTL@ -version-info @LIBGUILE_INTERFACE_CURRENT@:@LIBGUILE_INTERFACE_REVISION@:@LIBGUILE_INTERFACE_AGE@ -export-dynamic -no-undefined
+ 
+ # These are headers visible as <guile/mumble.h>
