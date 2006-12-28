@@ -1,3 +1,4 @@
+# TODO: kill LDFLAGS (--as-needed) from `guile-config link` output
 #
 # Conditional build:
 %bcond_without	tests	# don't perform ./check-guile
