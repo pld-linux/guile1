@@ -12,7 +12,7 @@ Summary(ru):	ñÚÙË ÒÁÓÛÉÒÅÎÉÊ GNU
 Summary(uk):	íÏ×Á ÒÏÚÛÉÒÅÎØ GNU
 Name:		guile
 Version:	1.8.1
-Release:	1
+Release:	2
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
@@ -27,6 +27,7 @@ Patch5:		%{name}-as-needed.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
+BuildRequires:	gettext-devel
 BuildRequires:	gmp-devel >= 4.1
 BuildRequires:	libltdl-devel
 BuildRequires:	libtool >= 1:1.4.2-9
@@ -152,6 +153,7 @@ Bibliotecas estáticas para desenvolvimento com guile
 # patch2 -p1
 
 %build
+%{__gettextize}
 %{__libtoolize}
 %{__aclocal} -I guile-config
 %{__autoconf}
