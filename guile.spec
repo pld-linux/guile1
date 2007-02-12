@@ -4,12 +4,12 @@
 %bcond_without	tests	# don't perform ./check-guile
 #
 Summary:	GNU Extension language
-Summary(es):	Lenguaje de extensiСn de la GNU
-Summary(ja):	╔╒╔в╔Й╔╠║╪╔╥╔Г╔С╓нЁхд╔╓н╓©╓А╓н GNU ╓к╓Х╓К Scheme ╓н╪баУ
-Summary(pl):	JЙzyk GNU Extension language
-Summary(pt_BR):	Linguagem de extensЦo da GNU
-Summary(ru):	Язык расширений GNU
-Summary(uk):	Мова розширень GNU
+Summary(es.UTF-8):   Lenguaje de extensiцЁn de la GNU
+Summary(ja.UTF-8):   Ц┌╒Ц┐≈Ц┐╙Ц┌╠Ц┐╪Ц┌╥Ц┐╖Ц┐ЁЦ│╝Ф▀║Е╪╣Ц│╝Ц│÷Ц┌│Ц│╝ GNU Ц│╚Ц┌┬Ц┌▀ Scheme Ц│╝Е╝÷Хё┘
+Summary(pl.UTF-8):   Jд≥zyk GNU Extension language
+Summary(pt_BR.UTF-8):   Linguagem de extensцёo da GNU
+Summary(ru.UTF-8):   п╞п╥я▀п╨ я─п╟я│я┬п╦я─п╣п╫п╦п╧ GNU
+Summary(uk.UTF-8):   п°п╬п╡п╟ я─п╬п╥я┬п╦я─п╣п╫я▄ GNU
 Name:		guile
 Version:	1.8.1
 Release:	2
@@ -43,47 +43,47 @@ Guile, a portable, embeddable Scheme implementation written in C.
 Guile provides a machine independent execution platform that can be
 linked in as a library when building extensible programs.
 
-%description -l es
-Guile es una implementaciСn de Scheme, que puede ser portАtil y
-empotrada, escrita en C. Guile provee una mАquina de ejecuciСn
+%description -l es.UTF-8
+Guile es una implementaciцЁn de Scheme, que puede ser portц║til y
+empotrada, escrita en C. Guile provee una mц║quina de ejecuciцЁn
 independiente de plataforma, que puede ser linkada como una biblioteca
 construyendo programas extensibles.
 
-%description -l ja
-GUILE (GNU's Ubiquitous Intelligent Language for Extension) ╓о Scheme
-╔в╔М╔╟╔И╔ъ╔С╔╟╦ю╦Л╓Р╪баУ╓╥╓© C ╓г╫Я╓╚╓Л╓©╔И╔╓╔ж╔И╔Й╓г╓╧║ё GUILE ╓о
-╔ч╔╥╔СхС╟мб╦╓н╪б╧т╢д╤╜╓г║╒╔в╔М╔╟╔И╔Ю╓нЁхд╔ю╜╓РдС╤║╓╥╓ч╓╧║ё
+%description -l ja.UTF-8
+GUILE (GNU's Ubiquitous Intelligent Language for Extension) Ц│╞ Scheme
+Ц┐≈Ц┐╜Ц┌╟Ц┐╘Ц┐÷Ц┐ЁЦ┌╟Х╗─Х╙·Ц┌▓Е╝÷Хё┘Ц│≈Ц│÷ C Ц│╖Ф⌡╦Ц│▀Ц┌▄Ц│÷Ц┐╘Ц┌╓Ц┐√Ц┐╘Ц┐╙Ц│╖Ц│≥Ц─┌ GUILE Ц│╞
+Ц┐·Ц┌╥Ц┐ЁИ²·Д╬²Е╜≤Ц│╝Е╝÷Х║▄Г▓╟Е╒┐Ц│╖Ц─│Ц┐≈Ц┐╜Ц┌╟Ц┐╘Ц┐═Ц│╝Ф▀║Е╪╣Ф─╖Ц┌▓Ф▐░Д╬⌡Ц│≈Ц│╬Ц│≥Ц─┌
 
-%description -l pl
-Guile jest przeno╤n╠, daj╠c╠ siЙ wbudowaФ implementacj╠ Scheme
-napisan╠ w C. Guile udostЙpnia platformЙ wykonywania niezale©n╠ od
-sprzЙtu, ktСra mo©e byФ doЁ╠czona jako biblioteka przy tworzeniu
-rozszerzalnych programСw.
+%description -l pl.UTF-8
+Guile jest przenoе⌡nд┘, dajд┘cд┘ siд≥ wbudowaд┤ implementacjд┘ Scheme
+napisanд┘ w C. Guile udostд≥pnia platformд≥ wykonywania niezaleе╪nд┘ od
+sprzд≥tu, ktцЁra moе╪e byд┤ doе┌д┘czona jako biblioteka przy tworzeniu
+rozszerzalnych programцЁw.
 
-%description -l pt_BR
-Guile И um implementaГЦo de Scheme portАvel e embutМvel escrita em C.
-Guile provЙ uma mАquina de execuГЦo independente de plataforma, que
-pode ser ligada como uma biblioteca construindo programas extensМveis.
+%description -l pt_BR.UTF-8
+Guile ц╘ um implementaц╖цёo de Scheme portц║vel e embutц╜vel escrita em C.
+Guile provц╙ uma mц║quina de execuц╖цёo independente de plataforma, que
+pode ser ligada como uma biblioteca construindo programas extensц╜veis.
 
-%description -l ru
-Guile - это переносимая, встраиваемая реализация языка Scheme
-написанная на C. Guile предоставляет машинонезависимую среду
-исполнения, которая может быть скомпонована с программой в виде
-библиотеки.
+%description -l ru.UTF-8
+Guile - я█я┌п╬ п©п╣я─п╣п╫п╬я│п╦п╪п╟я▐, п╡я│я┌я─п╟п╦п╡п╟п╣п╪п╟я▐ я─п╣п╟п╩п╦п╥п╟я├п╦я▐ я▐п╥я▀п╨п╟ Scheme
+п╫п╟п©п╦я│п╟п╫п╫п╟я▐ п╫п╟ C. Guile п©я─п╣п╢п╬я│я┌п╟п╡п╩я▐п╣я┌ п╪п╟я┬п╦п╫п╬п╫п╣п╥п╟п╡п╦я│п╦п╪я┐я▌ я│я─п╣п╢я┐
+п╦я│п©п╬п╩п╫п╣п╫п╦я▐, п╨п╬я┌п╬я─п╟я▐ п╪п╬п╤п╣я┌ п╠я▀я┌я▄ я│п╨п╬п╪п©п╬п╫п╬п╡п╟п╫п╟ я│ п©я─п╬пЁя─п╟п╪п╪п╬п╧ п╡ п╡п╦п╢п╣
+п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦.
 
-%description -l uk
-Guile - це переносима та вбудовувана реал╕зац╕я мови Scheme написана
-на C. Guile забезпечу╓ машинонезалежне середовище виконання, яке може
-бути скомпоноване з програмою у вигляд╕ б╕бл╕отеки.
+%description -l uk.UTF-8
+Guile - я├п╣ п©п╣я─п╣п╫п╬я│п╦п╪п╟ я┌п╟ п╡п╠я┐п╢п╬п╡я┐п╡п╟п╫п╟ я─п╣п╟п╩я√п╥п╟я├я√я▐ п╪п╬п╡п╦ Scheme п╫п╟п©п╦я│п╟п╫п╟
+п╫п╟ C. Guile п╥п╟п╠п╣п╥п©п╣я┤я┐я■ п╪п╟я┬п╦п╫п╬п╫п╣п╥п╟п╩п╣п╤п╫п╣ я│п╣я─п╣п╢п╬п╡п╦я┴п╣ п╡п╦п╨п╬п╫п╟п╫п╫я▐, я▐п╨п╣ п╪п╬п╤п╣
+п╠я┐я┌п╦ я│п╨п╬п╪п©п╬п╫п╬п╡п╟п╫п╣ п╥ п©я─п╬пЁя─п╟п╪п╬я▌ я┐ п╡п╦пЁп╩я▐п╢я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╦.
 
 %package devel
 Summary:	Guile's header files, etc
-Summary(es):	Bibliotecas de Guile, archivos de inclusiСn, etc
-Summary(ja):	GUILE Ёхд╔ю╜╔И╔╓╔ж╔И╔Ймя╓н╔И╔╓╔ж╔И╔Й╓х╔ь╔ц╔ю╔у╔║╔╓╔К
-Summary(pl):	Pliki nagЁСwkowe i dokumentacja Guile
-Summary(pt_BR):	Bibliotecas da Guile, arquivos de inclusЦo, etc
-Summary(ru):	Файлы для разработки программ с Guile
-Summary(uk):	Файли для розробки програм з Guile
+Summary(es.UTF-8):   Bibliotecas de Guile, archivos de inclusiцЁn, etc
+Summary(ja.UTF-8):   GUILE Ф▀║Е╪╣Ф─╖Ц┐╘Ц┌╓Ц┐√Ц┐╘Ц┐╙Г■╗Ц│╝Ц┐╘Ц┌╓Ц┐√Ц┐╘Ц┐╙Ц│╗Ц┐≤Ц┐┐Ц┐─Ц┐∙Ц┌║Ц┌╓Ц┐╚
+Summary(pl.UTF-8):   Pliki nagе┌цЁwkowe i dokumentacja Guile
+Summary(pt_BR.UTF-8):   Bibliotecas da Guile, arquivos de inclusцёo, etc
+Summary(ru.UTF-8):   п╓п╟п╧п╩я▀ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╬пЁя─п╟п╪п╪ я│ Guile
+Summary(uk.UTF-8):   п╓п╟п╧п╩п╦ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪ п╥ Guile
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	gmp-devel >= 4.1
@@ -94,51 +94,51 @@ Obsoletes:	libguile9-devel
 %description devel
 What's needed to develop apps linked w/ guile
 
-%description devel -l es
+%description devel -l es.UTF-8
 Este paquete contiene todo lo necesario para desarrollar aplicaciones
 usando Guile.
 
-%description -l ja
-guile-devel ╔я╔ц╔╠║╪╔╦╓о╔И╔╓╔ж╔И╔Й╓Д╔ь╔ц╔ю╔у╔║╔╓╔К║╒╓╫╓нб╬...╓╒╓й╓©╓╛
-GUILE Ёхд╔ю╜╔И╔╓╔ж╔И╔Й╓Р╔Й╔С╔╞╓╥╓©╔в╔М╔╟╔И╔Ю╓Р╨Ню╝╓╧╓К╓н╓ки╛мв╓й
-╔у╔║╔╓╔К╓РдС╤║╓╥╓ч╓╧║ё
+%description -l ja.UTF-8
+guile-devel Ц┐▒Ц┐┐Ц┌╠Ц┐╪Ц┌╦Ц│╞Ц┐╘Ц┌╓Ц┐√Ц┐╘Ц┐╙Ц┌└Ц┐≤Ц┐┐Ц┐─Ц┐∙Ц┌║Ц┌╓Ц┐╚Ц─│Ц│²Ц│╝Д╩√...Ц│┌Ц│╙Ц│÷Ц│▄
+GUILE Ф▀║Е╪╣Ф─╖Ц┐╘Ц┌╓Ц┐√Ц┐╘Ц┐╙Ц┌▓Ц┐╙Ц┐ЁЦ┌╞Ц│≈Ц│÷Ц┐≈Ц┐╜Ц┌╟Ц┐╘Ц┐═Ц┌▓Д╫°Ф┬░Ц│≥Ц┌▀Ц│╝Ц│╚Е©┘Х╕│Ц│╙
+Ц┐∙Ц┌║Ц┌╓Ц┐╚Ц┌▓Ф▐░Д╬⌡Ц│≈Ц│╬Ц│≥Ц─┌
 
-%description devel -l pl
-Pliki nagЁСwkowe i dokumentacja Guile.
+%description devel -l pl.UTF-8
+Pliki nagе┌цЁwkowe i dokumentacja Guile.
 
-%description devel -l pt_BR
-Este pacote contИm o que И necessАrio para desenvolver aplicaГУes
+%description devel -l pt_BR.UTF-8
+Este pacote contц╘m o que ц╘ necessц║rio para desenvolver aplicaц╖ц╣es
 usando a Guile.
 
-%description devel -l ru
-Все, что нужно для разработки приложений, скомпонованых с guile.
+%description devel -l ru.UTF-8
+п▓я│п╣, я┤я┌п╬ п╫я┐п╤п╫п╬ п╢п╩я▐ я─п╟п╥я─п╟п╠п╬я┌п╨п╦ п©я─п╦п╩п╬п╤п╣п╫п╦п╧, я│п╨п╬п╪п©п╬п╫п╬п╡п╟п╫я▀я┘ я│ guile.
 
-%description devel -l uk
-Все, що потр╕бно для розробки програм, що компонуються з guile.
+%description devel -l uk.UTF-8
+п▓я│п╣, я┴п╬ п©п╬я┌я─я√п╠п╫п╬ п╢п╩я▐ я─п╬п╥я─п╬п╠п╨п╦ п©я─п╬пЁя─п╟п╪, я┴п╬ п╨п╬п╪п©п╬п╫я┐я▌я┌я▄я│я▐ п╥ guile.
 
 %package static
 Summary:	Guile static libraries
-Summary(pl):	Biblioteka statyczna Guile
-Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com guile
-Summary(ru):	Статические библиотеки Guile
-Summary(uk):	Статичн╕ б╕бл╕отеки Guile
+Summary(pl.UTF-8):   Biblioteka statyczna Guile
+Summary(pt_BR.UTF-8):   Bibliotecas estц║ticas para desenvolvimento com guile
+Summary(ru.UTF-8):   п║я┌п╟я┌п╦я┤п╣я│п╨п╦п╣ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ Guile
+Summary(uk.UTF-8):   п║я┌п╟я┌п╦я┤п╫я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ Guile
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Guile static library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteka statyczna Guile.
 
-%description static -l pt_BR
-Bibliotecas estАticas para desenvolvimento com guile
+%description static -l pt_BR.UTF-8
+Bibliotecas estц║ticas para desenvolvimento com guile
 
-%description static -l ru
-Статические библиотеки guile.
+%description static -l ru.UTF-8
+п║я┌п╟я┌п╦я┤п╣я│п╨п╦п╣ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ guile.
 
-%description static -l uk
-Статичн╕ б╕бл╕отеки guile.
+%description static -l uk.UTF-8
+п║я┌п╟я┌п╦я┤п╫я√ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ guile.
 
 %prep
 %setup -q
