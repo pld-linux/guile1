@@ -4,12 +4,12 @@
 %bcond_without	tests	# don't perform ./check-guile
 #
 Summary:	GNU Extension language
-Summary(es.UTF-8):   Lenguaje de extensión de la GNU
-Summary(ja.UTF-8):   アプリケーションの拡張のための GNU による Scheme の実装
-Summary(pl.UTF-8):   Język GNU Extension language
-Summary(pt_BR.UTF-8):   Linguagem de extensão da GNU
-Summary(ru.UTF-8):   Язык расширений GNU
-Summary(uk.UTF-8):   Мова розширень GNU
+Summary(es.UTF-8):	Lenguaje de extensión de la GNU
+Summary(ja.UTF-8):	アプリケーションの拡張のための GNU による Scheme の実装
+Summary(pl.UTF-8):	Język GNU Extension language
+Summary(pt_BR.UTF-8):	Linguagem de extensão da GNU
+Summary(ru.UTF-8):	Язык расширений GNU
+Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
 Version:	1.8.1
 Release:	2
@@ -78,12 +78,12 @@ Guile - це переносима та вбудовувана реалізаці
 
 %package devel
 Summary:	Guile's header files, etc
-Summary(es.UTF-8):   Bibliotecas de Guile, archivos de inclusión, etc
-Summary(ja.UTF-8):   GUILE 拡張性ライブラリ用のライブラリとヘッダファイル
-Summary(pl.UTF-8):   Pliki nagłówkowe i dokumentacja Guile
-Summary(pt_BR.UTF-8):   Bibliotecas da Guile, arquivos de inclusão, etc
-Summary(ru.UTF-8):   Файлы для разработки программ с Guile
-Summary(uk.UTF-8):   Файли для розробки програм з Guile
+Summary(es.UTF-8):	Bibliotecas de Guile, archivos de inclusión, etc
+Summary(ja.UTF-8):	GUILE 拡張性ライブラリ用のライブラリとヘッダファイル
+Summary(pl.UTF-8):	Pliki nagłówkowe i dokumentacja Guile
+Summary(pt_BR.UTF-8):	Bibliotecas da Guile, arquivos de inclusão, etc
+Summary(ru.UTF-8):	Файлы для разработки программ с Guile
+Summary(uk.UTF-8):	Файли для розробки програм з Guile
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	gmp-devel >= 4.1
@@ -118,10 +118,10 @@ usando a Guile.
 
 %package static
 Summary:	Guile static libraries
-Summary(pl.UTF-8):   Biblioteka statyczna Guile
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas para desenvolvimento com guile
-Summary(ru.UTF-8):   Статические библиотеки Guile
-Summary(uk.UTF-8):   Статичні бібліотеки Guile
+Summary(pl.UTF-8):	Biblioteka statyczna Guile
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com guile
+Summary(ru.UTF-8):	Статические библиотеки Guile
+Summary(uk.UTF-8):	Статичні бібліотеки Guile
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
