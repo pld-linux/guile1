@@ -9,3 +9,14 @@
  libguile_la_LDFLAGS = @LTLIBINTL@ -version-info @LIBGUILE_INTERFACE_CURRENT@:@LIBGUILE_INTERFACE_REVISION@:@LIBGUILE_INTERFACE_AGE@ -export-dynamic -no-undefined
  
  # These are headers visible as <guile/mumble.h>
+--- guile-1.8.1/configure.in.orig	2006-10-05 21:19:40.000000000 +0200
++++ guile-1.8.1/configure.in	2007-05-26 10:30:31.957103693 +0200
+@@ -1275,7 +1275,7 @@
+ #######################################################################
+ 
+ dnl Tell guile-config what flags guile users should compile and link with.
+-GUILE_LIBS="$LDFLAGS $LIBS"
++GUILE_LIBS="$LIBS"
+ GUILE_CFLAGS="$PTHREAD_CFLAGS"
+ AC_SUBST(GUILE_LIBS)
+ AC_SUBST(GUILE_CFLAGS)
