@@ -1,4 +1,3 @@
-# TODO: kill LDFLAGS (--as-needed) from `guile-config link` output
 #
 # Conditional build:
 %bcond_without	tests	# don't perform ./check-guile
@@ -12,7 +11,7 @@ Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
 Version:	1.8.1
-Release:	2
+Release:	3
 Epoch:		5
 License:	GPL
 Group:		Development/Languages
