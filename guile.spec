@@ -37,6 +37,10 @@ Requires:	umb-scheme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libguile9
 
+%ifarch sparc sparc64
+%undefine	with_tests
+%endif
+
 %description
 Guile, a portable, embeddable Scheme implementation written in C.
 Guile provides a machine independent execution platform that can be
