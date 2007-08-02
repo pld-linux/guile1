@@ -13,7 +13,7 @@ Name:		guile
 Version:	1.8.2
 Release:	1
 Epoch:		5
-License:	GPL
+License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
 # Source0-md5:	a4b64a992deae0532f8015bcc6c40784
