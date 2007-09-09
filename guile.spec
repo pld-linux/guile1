@@ -11,12 +11,15 @@ Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
 Version:	1.8.2
-Release:	1
+Release:	2
 Epoch:		5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
 # Source0-md5:	a4b64a992deae0532f8015bcc6c40784
+# Source1 is guile.init from slib hacked as decribed at:
+# http://lists.gnu.org/archive/html/bug-guile/2006-11/msg00010.html
+Source1:	slib.scm
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
@@ -154,6 +157,7 @@ Bibliotecas estáticas para desenvolvimento com guile
 # I wouldn't apply it, it breaks other programs, but I have fixed it, so
 # if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
 # patch2 -p1
+install %{SOURCE1} ./ice-9/slib.scm
 
 %build
 %{__gettextize}
