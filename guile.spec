@@ -10,16 +10,13 @@ Summary(pt_BR.UTF-8):	Linguagem de extensão da GNU
 Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
-Version:	1.8.2
-Release:	2
+Version:	1.8.3
+Release:	1
 Epoch:		5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
-# Source0-md5:	a4b64a992deae0532f8015bcc6c40784
-# Source1 is guile.init from slib hacked as decribed at:
-# http://lists.gnu.org/archive/html/bug-guile/2006-11/msg00010.html
-Source1:	slib.scm
+# Source0-md5:	7fd016924e1bc3e273f4009a080942de
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
@@ -157,7 +154,6 @@ Bibliotecas estáticas para desenvolvimento com guile
 # I wouldn't apply it, it breaks other programs, but I have fixed it, so
 # if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
 # patch2 -p1
-install %{SOURCE1} ./ice-9/slib.scm
 
 %build
 %{__gettextize}
@@ -199,10 +195,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS HACKING NEWS README THANKS
+%doc AUTHORS NEWS README THANKS
 %attr(755,root,root) %{_bindir}/guile
 %attr(755,root,root) %{_bindir}/guile-tools
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libguile.so.*.*.*
+%attr(755,root,root) %{_libdir}/libguilereadline-v-*.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libguile-srfi-srfi-*.so.3
+%attr(755,root,root) %ghost %{_libdir}/libguile.so.17
+%attr(755,root,root) %ghost %{_libdir}/libguilereadline-v-*.so.17
 %{_libdir}/guile
 %{_datadir}/guile
 
@@ -211,12 +212,18 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog HACKING
 %attr(755,root,root) %{_bindir}/guile-config
 %attr(755,root,root) %{_bindir}/guile-snarf
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-*.so
+%attr(755,root,root) %{_libdir}/libguile.so
+%attr(755,root,root) %{_libdir}/libguilereadline-v-*.so
+%{_libdir}/libguile-srfi-srfi-*.la
+%{_libdir}/libguile.la
+%{_libdir}/libguilereadline-v-*.la
 %{_infodir}/*.info*
 %{_includedir}/*guile*
 %{_aclocaldir}/guile.m4
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libguile-srfi-srfi-*.a
+%{_libdir}/libguile.a
+%{_libdir}/libguilereadline-v-*.a
