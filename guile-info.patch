@@ -1,11 +1,8 @@
 --- guile-1.6.1/doc/ref/data-rep.texi~	Wed May 15 21:22:11 2002
 +++ guile-1.6.1/doc/ref/data-rep.texi	Wed May 15 21:30:25 2002
-@@ -7,10 +7,10 @@
+@@ -9,8 +9,8 @@
  
- @c essay @include version.texi
- 
--@c essay @dircategory The Algorithmic Language Scheme
-+@c essay @dircategory Programming Languages:
+ @c essay @dircategory The Algorithmic Language Scheme
  @c essay @direntry
 -@c essay * data-rep: (data-rep).  Data Representation in Guile --- how to use
 -@c essay                 Guile objects in your C code.
@@ -16,12 +13,9 @@
  @c essay @setchapternewpage off
 --- guile-1.6.1/doc/ref/guile.texi.orig	Sun May  5 13:31:59 2002
 +++ guile-1.6.1/doc/ref/guile.texi	Tue May 21 22:21:17 2002
-@@ -24,9 +24,9 @@
- @c @cropmarks
- @c @end iftex
+@@ -26,7 +26,7 @@
  
--@dircategory The Algorithmic Language Scheme
-+@dircategory Programming Languages:
+ @dircategory The Algorithmic Language Scheme
  @direntry
 -* Guile Reference: (guile).     The Guile reference manual.
 +* Guile Reference: (guile).		The Guile reference manual
@@ -30,12 +24,9 @@
  @setchapternewpage off
 --- guile-1.6.1/doc/goops/goops.texi.orig	Sat Dec  7 23:41:28 2002
 +++ guile-1.6.1/doc/goops/goops.texi	Tue Dec 24 23:34:06 2002
-@@ -10,9 +10,9 @@
+@@ -8,7 +8,7 @@
  
- @set VERSION 0.3
- 
--@dircategory The Algorithmic Language Scheme
-+@dircategory Programming Languages:
+ @dircategory The Algorithmic Language Scheme
  @direntry
 -* GOOPS: (goops).               The GOOPS reference manual.
 +* GOOPS: (goops).			The GOOPS reference manual
@@ -44,12 +35,9 @@
  @macro goops
 --- guile-1.6.1/doc/r5rs/r5rs.texi.orig	Sat Dec  7 23:41:29 2002
 +++ guile-1.6.1/doc/r5rs/r5rs.texi	Tue Dec 24 23:34:38 2002
-@@ -64,9 +64,9 @@
- @c syncodeindex fn cp
- 
+@@ -66,7 +66,7 @@
  @ifinfo
--@dircategory The Algorithmic Language Scheme
-+@dircategory Programming Languages:
+ @dircategory The Algorithmic Language Scheme
  @direntry
 -* R5RS: (r5rs).                 The Revised(5) Report on Scheme.
 +* R5RS: (r5rs).				The Revised(5) Report on Scheme
@@ -58,12 +46,9 @@
  
 --- guile-1.6.1/doc/tutorial/guile-tut.texi.orig	Sat Dec  7 23:41:30 2002
 +++ guile-1.6.1/doc/tutorial/guile-tut.texi	Tue Dec 24 23:48:06 2002
-@@ -6,9 +6,9 @@
+@@ -8,7 +8,7 @@
  
- @include version.texi
- 
--@dircategory The Algorithmic Language Scheme
-+@dircategory Programming Languages:
+ @dircategory The Algorithmic Language Scheme
  @direntry
 -* Guile Tutorial: (guile-tut).  The Guile tutorial.
 +* Guile Tutorial: (guile-tut).		The Guile tutorial
