@@ -10,13 +10,13 @@ Summary(pt_BR.UTF-8):	Linguagem de extensão da GNU
 Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
-Version:	1.8.3
-Release:	2
+Version:	1.8.4
+Release:	1
 Epoch:		5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
 Source0:	ftp://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
-# Source0-md5:	7fd016924e1bc3e273f4009a080942de
+# Source0-md5:	aacc6a384af88a85574717a9221f5c6e
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
@@ -187,10 +187,10 @@ rm -rf $RPM_BUILD_ROOT
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%post devel	-p	/sbin/postshell
+%post	devel -p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun devel	-p	/sbin/postshell
+%postun	devel -p /sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %files
@@ -198,12 +198,18 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS NEWS README THANKS
 %attr(755,root,root) %{_bindir}/guile
 %attr(755,root,root) %{_bindir}/guile-tools
-%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-*.so.*.*.*
 %attr(755,root,root) %{_libdir}/libguile.so.*.*.*
-%attr(755,root,root) %{_libdir}/libguilereadline-v-*.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libguile-srfi-srfi-*.so.3
 %attr(755,root,root) %ghost %{_libdir}/libguile.so.17
-%attr(755,root,root) %ghost %{_libdir}/libguilereadline-v-*.so.17
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-1-v-3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libguile-srfi-srfi-1-v-3.so.3
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-4-v-3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libguile-srfi-srfi-4-v-3.so.3
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-13-14-v-3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libguile-srfi-srfi-13-14-v-3.so.3
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-60-v-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libguile-srfi-srfi-60-v-2.so.2
+%attr(755,root,root) %{_libdir}/libguilereadline-v-17.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libguilereadline-v-17.so.17
 %{_libdir}/guile
 %{_datadir}/guile
 
@@ -212,18 +218,32 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog HACKING
 %attr(755,root,root) %{_bindir}/guile-config
 %attr(755,root,root) %{_bindir}/guile-snarf
-%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-*.so
 %attr(755,root,root) %{_libdir}/libguile.so
-%attr(755,root,root) %{_libdir}/libguilereadline-v-*.so
-%{_libdir}/libguile-srfi-srfi-*.la
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-1-v-3.so
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-4-v-3.so
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-13-14-v-3.so
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-60-v-2.so
+%attr(755,root,root) %{_libdir}/libguilereadline-v-17.so
 %{_libdir}/libguile.la
-%{_libdir}/libguilereadline-v-*.la
-%{_infodir}/*.info*
-%{_includedir}/*guile*
+%{_libdir}/libguile-srfi-srfi-1-v-3.la
+%{_libdir}/libguile-srfi-srfi-4-v-3.la
+%{_libdir}/libguile-srfi-srfi-13-14-v-3.la
+%{_libdir}/libguile-srfi-srfi-60-v-2.la
+%{_libdir}/libguilereadline-v-17.la
+%{_infodir}/goops.info*
+%{_infodir}/guile.info*
+%{_infodir}/guile-tut.info*
+%{_infodir}/r5rs.info*
+%{_includedir}/guile
+%{_includedir}/libguile
+%{_includedir}/libguile.h
 %{_aclocaldir}/guile.m4
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libguile-srfi-srfi-*.a
 %{_libdir}/libguile.a
-%{_libdir}/libguilereadline-v-*.a
+%{_libdir}/libguile-srfi-srfi-1-v-3.a
+%{_libdir}/libguile-srfi-srfi-4-v-3.a
+%{_libdir}/libguile-srfi-srfi-13-14-v-3.a
+%{_libdir}/libguile-srfi-srfi-60-v-2.a
+%{_libdir}/libguilereadline-v-17.a
