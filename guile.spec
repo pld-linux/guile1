@@ -2,6 +2,7 @@
 # Conditional build:
 %bcond_without	tests	# don't perform ./check-guile
 #
+%define		ver	1.8
 Summary:	GNU Extension language
 Summary(es.UTF-8):	Lenguaje de extensión de la GNU
 Summary(ja.UTF-8):	アプリケーションの拡張のための GNU による Scheme の実装
@@ -211,7 +212,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libguilereadline-v-17.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libguilereadline-v-17.so.17
 %{_libdir}/guile
-%{_datadir}/guile
+%dir %{_datadir}/guile
+%dir %{_datadir}/guile/%{ver}
+%{_datadir}/guile/%{ver}/guile-procedures.txt
+%{_datadir}/guile/%{ver}/ice-9
+%{_datadir}/guile/%{ver}/lang
+%{_datadir}/guile/%{ver}/oop
+%dir %{_datadir}/guile/%{ver}/scripts
+%attr(755,root,root) %{_datadir}/guile/%{ver}/scripts/*
+%{_datadir}/guile/%{ver}/srfi
 
 %files devel
 %defattr(644,root,root,755)
