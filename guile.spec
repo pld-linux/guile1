@@ -1,3 +1,10 @@
+# TODO:
+#   fix libguile-srfi* problem:
+#	guile> (use-modules (srfi srfi-1))
+#	BLAH, BLAH, BLAH: "libguile-srfi-srfi-1-v-3.so: cannot open shared object file: No such file or directory"
+#   solutions:
+#	- mv libguile-srfi*.so to main pkg (like in Fedora)
+#	- fix libguile-srfi* linking
 #
 # Conditional build:
 %bcond_without	tests	# don't perform ./check-guile
@@ -12,7 +19,7 @@ Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
 Version:	1.8.4
-Release:	1
+Release:	1.1
 Epoch:		5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
