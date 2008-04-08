@@ -23,7 +23,7 @@ Release:	1.1
 Epoch:		5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
-Source0:	ftp://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
 # Source0-md5:	aacc6a384af88a85574717a9221f5c6e
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
