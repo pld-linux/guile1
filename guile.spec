@@ -158,6 +158,7 @@ Bibliotecas estáticas para desenvolvimento com guile
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+sed -i 's/AC_CONFIG_MACRO_DIR(\[m4\])/AC_CONFIG_MACRO_DIR(\[guile-config\])/' configure.in
 
 # I wouldn't apply it, it breaks other programs, but I have fixed it, so
 # if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
@@ -166,10 +167,11 @@ Bibliotecas estáticas para desenvolvimento com guile
 %build
 %{__gettextize}
 %{__libtoolize}
-%{__aclocal} -I guile-config
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 cd guile-readline
+%{__libtoolize}
 %{__aclocal} -I ../guile-config
 %{__autoconf}
 # DON'T USE --force HERE - it would break build
