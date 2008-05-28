@@ -1,10 +1,3 @@
-# TODO:
-#   fix libguile-srfi* problem:
-#	guile> (use-modules (srfi srfi-1))
-#	BLAH, BLAH, BLAH: "libguile-srfi-srfi-1-v-3.so: cannot open shared object file: No such file or directory"
-#   solutions:
-#	- mv libguile-srfi*.so to main pkg (like in Fedora)
-#	- fix libguile-srfi* linking
 #
 # Conditional build:
 %bcond_without	tests	# don't perform ./check-guile
@@ -18,13 +11,13 @@ Summary(pt_BR.UTF-8):	Linguagem de extensão da GNU
 Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
-Version:	1.8.4
-Release:	3
+Version:	1.8.5
+Release:	1
 Epoch:		5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
 Source0:	http://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
-# Source0-md5:	aacc6a384af88a85574717a9221f5c6e
+# Source0-md5:	a3f8216544509a74a4441f689a0410d2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-SCM_SITE_DIR_path.patch
@@ -42,8 +35,8 @@ BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
 BuildRequires:	texinfo
 Requires:	umb-scheme
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libguile9
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %ifarch sparc sparc64
 %undefine	with_tests
@@ -210,16 +203,22 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/guile-tools
 %attr(755,root,root) %{_libdir}/libguile.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libguile.so.17
+# shared libraries dlopened by interpreter (.so or .la needed)
 %attr(755,root,root) %{_libdir}/libguile-srfi-srfi-1-v-3.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libguile-srfi-srfi-1-v-3.so.3
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-1-v-3.so
 %attr(755,root,root) %{_libdir}/libguile-srfi-srfi-4-v-3.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libguile-srfi-srfi-4-v-3.so.3
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-4-v-3.so
 %attr(755,root,root) %{_libdir}/libguile-srfi-srfi-13-14-v-3.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libguile-srfi-srfi-13-14-v-3.so.3
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-13-14-v-3.so
 %attr(755,root,root) %{_libdir}/libguile-srfi-srfi-60-v-2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libguile-srfi-srfi-60-v-2.so.2
+%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-60-v-2.so
 %attr(755,root,root) %{_libdir}/libguilereadline-v-17.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libguilereadline-v-17.so.17
+%attr(755,root,root) %{_libdir}/libguilereadline-v-17.so
 %{_libdir}/guile
 %dir %{_datadir}/guile
 %dir %{_datadir}/guile/%{ver}
@@ -238,11 +237,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/guile-config
 %attr(755,root,root) %{_bindir}/guile-snarf
 %attr(755,root,root) %{_libdir}/libguile.so
-%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-1-v-3.so
-%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-4-v-3.so
-%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-13-14-v-3.so
-%attr(755,root,root) %{_libdir}/libguile-srfi-srfi-60-v-2.so
-%attr(755,root,root) %{_libdir}/libguilereadline-v-17.so
 %{_libdir}/libguile.la
 %{_libdir}/libguile-srfi-srfi-1-v-3.la
 %{_libdir}/libguile-srfi-srfi-4-v-3.la
@@ -256,6 +250,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/guile
 %{_includedir}/libguile
 %{_includedir}/libguile.h
+%{_pkgconfigdir}/guile-1.8.pc
 %{_aclocaldir}/guile.m4
 
 %files static
