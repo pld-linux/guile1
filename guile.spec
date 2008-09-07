@@ -12,7 +12,7 @@ Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
 Version:	1.8.5
-Release:	2
+Release:	3
 Epoch:		5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
