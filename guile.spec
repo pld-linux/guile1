@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	tests	# don't perform ./check-guile
+%bcond_without	emacs	# don't build emacs subpackage
 #
 %define		ver	1.8
 Summary:	GNU Extension language
@@ -12,7 +13,7 @@ Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
 Version:	1.8.5
-Release:	3
+Release:	4
 Epoch:		5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
@@ -27,6 +28,7 @@ Patch5:		%{name}-as-needed.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
+%{?with_emacs:BuildRequires:	emacs}
 BuildRequires:	gettext-devel
 BuildRequires:	gmp-devel >= 4.1
 BuildRequires:	libltdl-devel
@@ -144,6 +146,18 @@ Bibliotecas estáticas para desenvolvimento com guile
 %description static -l uk.UTF-8
 Статичні бібліотеки guile.
 
+%package -n emacs-guile-mode-pkg
+Summary:	emacs guile-mode
+Summary(pl.UTF-8):	Tryb guile dla emacsa
+Group:		Applications/Editors/Emacs
+Requires:	emacs
+
+%description -n emacs-guile-mode-pkg
+Emacs guile-mode.
+
+%description -n emacs-guile-mode-pkg -l pl.UTF-8
+Tryb edycji guile dla emacsa.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -170,7 +184,8 @@ cd guile-readline
 # DON'T USE --force HERE - it would break build
 automake -a -c --foreign
 cd ..
-%configure
+%configure \
+	--enable-error-on-warning=no
 
 %{__make}
 
@@ -261,3 +276,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libguile-srfi-srfi-13-14-v-3.a
 %{_libdir}/libguile-srfi-srfi-60-v-2.a
 %{_libdir}/libguilereadline-v-17.a
+
+%if %{with emacs}
+%files -n emacs-guile-mode-pkg
+%defattr(644,root,root,755)
+%{_emacs_lispdir}/*.el
+%endif
