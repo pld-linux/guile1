@@ -13,7 +13,7 @@ Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
 Version:	1.8.6
-Release:	0.1
+Release:	1
 Epoch:		5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
@@ -240,6 +240,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/guile/%{ver}/scripts/*
 %{_datadir}/guile/%{ver}/srfi
 %dir %{_datadir}/guile/site
+%{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
