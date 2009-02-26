@@ -21,9 +21,9 @@ Source0:	http://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
 # Source0-md5:	9e23d3dbea0e89bab8a9acc6880150de
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
-Patch3:		%{name}-unknown_arch.patch
-Patch4:		%{name}-test-hacks.patch
-Patch5:		%{name}-as-needed.patch
+Patch2:		%{name}-unknown_arch.patch
+Patch3:		%{name}-test-hacks.patch
+Patch4:		%{name}-as-needed.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1.6
@@ -161,9 +161,9 @@ Tryb edycji guile dla emacsa.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
 %{__gettextize}
