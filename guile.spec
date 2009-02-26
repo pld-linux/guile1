@@ -21,7 +21,6 @@ Source0:	http://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
 # Source0-md5:	9e23d3dbea0e89bab8a9acc6880150de
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
-Patch2:		%{name}-SCM_SITE_DIR_path.patch
 Patch3:		%{name}-unknown_arch.patch
 Patch4:		%{name}-test-hacks.patch
 Patch5:		%{name}-as-needed.patch
@@ -165,11 +164,6 @@ Tryb edycji guile dla emacsa.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-sed -i 's/AC_CONFIG_MACRO_DIR(\[m4\])/AC_CONFIG_MACRO_DIR(\[guile-config\])/' configure.in
-
-# I wouldn't apply it, it breaks other programs, but I have fixed it, so
-# if you convince me... (but remember about perl, python, tcl and ruby ) (filon)
-# patch2 -p1
 
 %build
 %{__gettextize}
@@ -189,6 +183,7 @@ cd ..
 
 %{__make}
 
+%{?with_tests:%{__make} -C libguile stack-limit-calibration.scm}
 %{?with_tests:./check-guile}
 
 %install
