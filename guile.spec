@@ -12,21 +12,20 @@ Summary(pt_BR.UTF-8):	Linguagem de extensão da GNU
 Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
-Version:	1.8.6
-Release:	2
+Version:	1.8.7
+Release:	1
 Epoch:		5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
 Source0:	http://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
-# Source0-md5:	9e23d3dbea0e89bab8a9acc6880150de
+# Source0-md5:	991b5b3efcbbc3f7507d05bc42f80a5e
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-unknown_arch.patch
-Patch3:		%{name}-test-hacks.patch
-Patch4:		%{name}-as-needed.patch
+Patch3:		%{name}-as-needed.patch
 URL:		http://www.gnu.org/software/guile/guile.html
-BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake >= 1.6
+BuildRequires:	autoconf >= 2.61
+BuildRequires:	automake >= 1:1.10
 %{?with_emacs:BuildRequires:	emacs}
 BuildRequires:	gettext-devel
 BuildRequires:	gmp-devel >= 4.1
@@ -163,12 +162,11 @@ Tryb edycji guile dla emacsa.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %build
 %{__gettextize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
 cd guile-readline
