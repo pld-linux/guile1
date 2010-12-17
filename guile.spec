@@ -238,7 +238,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/guile/%{ver}/scripts/*
 %{_datadir}/guile/%{ver}/srfi
 %dir %{_datadir}/guile/site
-%{_mandir}/man1/*
+%{_mandir}/man1/guile.1*
 
 %files devel
 %defattr(644,root,root,755)
