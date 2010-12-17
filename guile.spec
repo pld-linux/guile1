@@ -12,13 +12,13 @@ Summary(pt_BR.UTF-8):	Linguagem de extensão da GNU
 Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile
-Version:	1.8.7
+Version:	1.8.8
 Release:	1
 Epoch:		5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
 Source0:	http://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
-# Source0-md5:	991b5b3efcbbc3f7507d05bc42f80a5e
+# Source0-md5:	18661a8fdfef13e2fcb7651720aa53f3
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-fix_awk_patch.patch
 Patch2:		%{name}-unknown_arch.patch
