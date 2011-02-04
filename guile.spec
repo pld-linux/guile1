@@ -102,7 +102,7 @@ What's needed to develop apps linked w/ guile
 Este paquete contiene todo lo necesario para desarrollar aplicaciones
 usando Guile.
 
-%description -l ja.UTF-8
+%description devel -l ja.UTF-8
 guile-devel パッケージはライブラリやヘッダファイル、その他...あなたが
 GUILE 拡張性ライブラリをリンクしたプログラムを作成するのに必要な
 ファイルを提供します。
