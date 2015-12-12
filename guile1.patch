@@ -1,0 +1,22 @@
+diff -dur guile-1.8.8.orig/guile-1.8.pc.in guile-1.8.8/guile-1.8.pc.in
+--- guile-1.8.8.orig/guile-1.8.pc.in	2010-12-13 18:24:39.000000000 +0100
++++ guile-1.8.8/guile-1.8.pc.in	2015-12-12 13:04:03.111394819 +0100
+@@ -11,5 +11,5 @@
+ Name: GNU Guile
+ Description: GNU's Ubiquitous Intelligent Language for Extension
+ Version: @GUILE_VERSION@
+-Libs: -L${libdir} -lguile @GUILE_LIBS@
++Libs: -L${libdir} -lguile1 @GUILE_LIBS@
+ Cflags: -I${includedir} @GUILE_CFLAGS@
+diff -dur guile-1.8.8.orig/guile-config/guile-config.in guile-1.8.8/guile-config/guile-config.in
+--- guile-1.8.8.orig/guile-config/guile-config.in	2010-12-13 18:24:39.000000000 +0100
++++ guile-1.8.8/guile-config/guile-config.in	2015-12-12 13:07:04.216728218 +0100
+@@ -155,7 +155,7 @@
+                        (string=? libdir "/usr/lib/"))
+ 		   ""
+ 		   (string-append "-L" (get-build-info 'libdir)))
+-               "-lguile -lltdl"
++               "-lguile1 -lltdl"
+ 	       (string-join other-flags)
+ 
+ 	       )))

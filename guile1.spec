@@ -1,7 +1,6 @@
 #
 # Conditional build:
 %bcond_without	tests	# don't perform ./check-guile
-%bcond_without	emacs	# don't build emacs subpackage
 #
 %define		ver	1.8
 Summary:	GNU Extension language
@@ -11,22 +10,22 @@ Summary(pl.UTF-8):	Język GNU Extension language
 Summary(pt_BR.UTF-8):	Linguagem de extensão da GNU
 Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
-Name:		guile
+Name:		guile1
 Version:	1.8.8
-Release:	1
-Epoch:		5
+Release:	0.1
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
-Source0:	http://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/guile/guile-%{version}.tar.gz
 # Source0-md5:	18661a8fdfef13e2fcb7651720aa53f3
-Patch0:		%{name}-info.patch
-Patch1:		%{name}-fix_awk_patch.patch
-Patch2:		%{name}-unknown_arch.patch
-Patch3:		%{name}-as-needed.patch
+Patch0:		guile-info.patch
+Patch1:		guile-fix_awk_patch.patch
+Patch2:		guile-unknown_arch.patch
+Patch3:		guile-as-needed.patch
+Patch4:		guile1.patch
+Patch5:		guile-nodoc.patch
 URL:		http://www.gnu.org/software/guile/guile.html
 BuildRequires:	autoconf >= 2.61
 BuildRequires:	automake >= 1:1.10
-%{?with_emacs:BuildRequires:	emacs}
 BuildRequires:	gettext-devel
 BuildRequires:	gmp-devel >= 4.1
 BuildRequires:	libltdl-devel
@@ -144,24 +143,14 @@ Bibliotecas estáticas para desenvolvimento com guile
 %description static -l uk.UTF-8
 Статичні бібліотеки guile.
 
-%package -n emacs-guile-mode-pkg
-Summary:	emacs guile-mode
-Summary(pl.UTF-8):	Tryb guile dla emacsa
-Group:		Applications/Editors/Emacs
-Requires:	emacs
-
-%description -n emacs-guile-mode-pkg
-Emacs guile-mode.
-
-%description -n emacs-guile-mode-pkg -l pl.UTF-8
-Tryb edycji guile dla emacsa.
-
 %prep
-%setup -q
+%setup -qn guile-%{version}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 %{__gettextize}
@@ -192,6 +181,15 @@ install -d $RPM_BUILD_ROOT{%{_datadir}/guile/site,%{_libdir}/guile}
 	DESTDIR=$RPM_BUILD_ROOT \
 	aclocaldir=%{_aclocaldir}
 
+mv $RPM_BUILD_ROOT%{_bindir}/guile{,1}
+mv $RPM_BUILD_ROOT%{_bindir}/guile{,1}-tools
+mv $RPM_BUILD_ROOT%{_bindir}/guile{,1}-config
+mv $RPM_BUILD_ROOT%{_bindir}/guile{,1}-snarf
+mv $RPM_BUILD_ROOT%{_libdir}/libguile{,1}.so
+mv $RPM_BUILD_ROOT%{_libdir}/libguile{,1}.la
+mv $RPM_BUILD_ROOT%{_libdir}/libguile{,1}.a
+mv $RPM_BUILD_ROOT%{_aclocaldir}/guile{,1}.m4
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -207,8 +205,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README THANKS
-%attr(755,root,root) %{_bindir}/guile
-%attr(755,root,root) %{_bindir}/guile-tools
+%attr(755,root,root) %{_bindir}/guile1
+%attr(755,root,root) %{_bindir}/guile1-tools
 %attr(755,root,root) %{_libdir}/libguile.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libguile.so.17
 # shared libraries dlopened by interpreter (.so or .la needed)
@@ -238,41 +236,30 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/guile/%{ver}/scripts/*
 %{_datadir}/guile/%{ver}/srfi
 %dir %{_datadir}/guile/site
-%{_mandir}/man1/guile.1*
 
 %files devel
 %defattr(644,root,root,755)
 %doc ChangeLog HACKING
-%attr(755,root,root) %{_bindir}/guile-config
-%attr(755,root,root) %{_bindir}/guile-snarf
-%attr(755,root,root) %{_libdir}/libguile.so
-%{_libdir}/libguile.la
+%attr(755,root,root) %{_bindir}/guile1-config
+%attr(755,root,root) %{_bindir}/guile1-snarf
+%attr(755,root,root) %{_libdir}/libguile1.so
+%{_libdir}/libguile1.la
 %{_libdir}/libguile-srfi-srfi-1-v-3.la
 %{_libdir}/libguile-srfi-srfi-4-v-3.la
 %{_libdir}/libguile-srfi-srfi-13-14-v-3.la
 %{_libdir}/libguile-srfi-srfi-60-v-2.la
 %{_libdir}/libguilereadline-v-17.la
-%{_infodir}/goops.info*
-%{_infodir}/guile.info*
-%{_infodir}/guile-tut.info*
-%{_infodir}/r5rs.info*
 %{_includedir}/guile
 %{_includedir}/libguile
 %{_includedir}/libguile.h
 %{_pkgconfigdir}/guile-1.8.pc
-%{_aclocaldir}/guile.m4
+%{_aclocaldir}/guile1.m4
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libguile.a
+%{_libdir}/libguile1.a
 %{_libdir}/libguile-srfi-srfi-1-v-3.a
 %{_libdir}/libguile-srfi-srfi-4-v-3.a
 %{_libdir}/libguile-srfi-srfi-13-14-v-3.a
 %{_libdir}/libguile-srfi-srfi-60-v-2.a
 %{_libdir}/libguilereadline-v-17.a
-
-%if %{with emacs}
-%files -n emacs-guile-mode-pkg
-%defattr(644,root,root,755)
-%{_emacs_lispdir}/*.el
-%endif

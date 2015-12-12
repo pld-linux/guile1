@@ -1,0 +1,12 @@
+diff -dur guile-1.8.8.orig/Makefile.am guile-1.8.8/Makefile.am
+--- guile-1.8.8.orig/Makefile.am	2010-12-13 18:24:38.000000000 +0100
++++ guile-1.8.8/Makefile.am	2015-12-12 13:13:13.430151584 +0100
+@@ -25,7 +25,7 @@
+ AUTOMAKE_OPTIONS = 1.10
+ 
+ SUBDIRS = oop libguile ice-9 guile-config guile-readline emacs \
+-	  scripts srfi doc examples test-suite benchmark-suite lang am
++	  scripts srfi examples test-suite benchmark-suite lang am
+ 
+ bin_SCRIPTS = guile-tools
+ 
