@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	tests	# don't perform ./check-guile
+%bcond_with	tests	# don't perform ./check-guile
 #
 %define		ver	1.8
 Summary:	GNU Extension language
@@ -12,7 +12,7 @@ Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile1
 Version:	1.8.8
-Release:	0.1
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
 Source0:	http://ftp.gnu.org/gnu/guile/guile-%{version}.tar.gz
