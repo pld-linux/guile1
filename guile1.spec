@@ -190,6 +190,8 @@ mv $RPM_BUILD_ROOT%{_libdir}/libguile{,1}.la
 mv $RPM_BUILD_ROOT%{_libdir}/libguile{,1}.a
 mv $RPM_BUILD_ROOT%{_aclocaldir}/guile{,1}.m4
 
+sed -i -e's/libguile\.\(l\?a\)/libguile1.\1/' $RPM_BUILD_ROOT%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
