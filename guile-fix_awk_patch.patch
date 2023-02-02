@@ -1,8 +1,9 @@
---- guile-1.6.1.orig/libguile/guile-func-name-check.in	Sat Aug 26 19:19:07 2000
-+++ guile-1.6.1/libguile/guile-func-name-check.in	Tue Jan 11 22:47:57 2000
+diff -urNp -x '*.orig' guile-1.8.8.org/libguile/guile-func-name-check.in guile-1.8.8/libguile/guile-func-name-check.in
+--- guile-1.8.8.org/libguile/guile-func-name-check.in	2010-12-13 18:24:40.000000000 +0100
++++ guile-1.8.8/libguile/guile-func-name-check.in	2023-02-02 08:57:48.934211013 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/awk -f
 +#!/bin/awk -f
  #
- #  Copyright (C) 2000, 2001 Free Software Foundation, Inc.
- #
+ #  Copyright (C) 2000, 2001, 2006 Free Software Foundation, Inc.
+ # 

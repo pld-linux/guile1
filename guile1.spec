@@ -12,7 +12,7 @@ Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile1
 Version:	1.8.8
-Release:	4
+Release:	5
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
 Source0:	http://ftp.gnu.org/gnu/guile/guile-%{version}.tar.gz

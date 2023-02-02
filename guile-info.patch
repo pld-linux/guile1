@@ -1,6 +1,31 @@
---- guile-1.6.1/doc/ref/data-rep.texi~	Wed May 15 21:22:11 2002
-+++ guile-1.6.1/doc/ref/data-rep.texi	Wed May 15 21:30:25 2002
-@@ -9,8 +9,8 @@
+diff -urNp -x '*.orig' guile-1.8.8.org/doc/goops/goops.texi guile-1.8.8/doc/goops/goops.texi
+--- guile-1.8.8.org/doc/goops/goops.texi	2010-12-13 18:24:39.000000000 +0100
++++ guile-1.8.8/doc/goops/goops.texi	2023-02-02 08:57:34.634124913 +0100
+@@ -12,7 +12,7 @@
+ 
+ @dircategory The Algorithmic Language Scheme
+ @direntry
+-* GOOPS: (goops).               The GOOPS reference manual.
++* GOOPS: (goops).			The GOOPS reference manual
+ @end direntry
+ 
+ @macro goops
+diff -urNp -x '*.orig' guile-1.8.8.org/doc/r5rs/r5rs.texi guile-1.8.8/doc/r5rs/r5rs.texi
+--- guile-1.8.8.org/doc/r5rs/r5rs.texi	2010-12-08 10:06:50.000000000 +0100
++++ guile-1.8.8/doc/r5rs/r5rs.texi	2023-02-02 08:57:34.637458266 +0100
+@@ -66,7 +66,7 @@
+ @ifinfo
+ @dircategory The Algorithmic Language Scheme
+ @direntry
+-* R5RS: (r5rs).                 The Revised(5) Report on Scheme.
++* R5RS: (r5rs).				The Revised(5) Report on Scheme
+ @end direntry
+ @end ifinfo
+ 
+diff -urNp -x '*.orig' guile-1.8.8.org/doc/ref/data-rep.texi guile-1.8.8/doc/ref/data-rep.texi
+--- guile-1.8.8.org/doc/ref/data-rep.texi	2010-12-13 18:24:39.000000000 +0100
++++ guile-1.8.8/doc/ref/data-rep.texi	2023-02-02 08:57:34.634124913 +0100
+@@ -15,8 +15,8 @@
  
  @c essay @dircategory The Algorithmic Language Scheme
  @c essay @direntry
@@ -11,9 +36,10 @@
  @c essay @end direntry
  
  @c essay @setchapternewpage off
---- guile-1.6.1/doc/ref/guile.texi.orig	Sun May  5 13:31:59 2002
-+++ guile-1.6.1/doc/ref/guile.texi	Tue May 21 22:21:17 2002
-@@ -26,7 +26,7 @@
+diff -urNp -x '*.orig' guile-1.8.8.org/doc/ref/guile.texi guile-1.8.8/doc/ref/guile.texi
+--- guile-1.8.8.org/doc/ref/guile.texi	2010-12-13 18:25:01.000000000 +0100
++++ guile-1.8.8/doc/ref/guile.texi	2023-02-02 08:57:34.634124913 +0100
+@@ -127,7 +127,7 @@ x
  
  @dircategory The Algorithmic Language Scheme
  @direntry
@@ -21,31 +47,10 @@
 +* Guile Reference: (guile).		The Guile reference manual
  @end direntry
  
- @setchapternewpage off
---- guile-1.6.1/doc/goops/goops.texi.orig	Sat Dec  7 23:41:28 2002
-+++ guile-1.6.1/doc/goops/goops.texi	Tue Dec 24 23:34:06 2002
-@@ -8,7 +8,7 @@
- 
- @dircategory The Algorithmic Language Scheme
- @direntry
--* GOOPS: (goops).               The GOOPS reference manual.
-+* GOOPS: (goops).			The GOOPS reference manual
- @end direntry
- 
- @macro goops
---- guile-1.6.1/doc/r5rs/r5rs.texi.orig	Sat Dec  7 23:41:29 2002
-+++ guile-1.6.1/doc/r5rs/r5rs.texi	Tue Dec 24 23:34:38 2002
-@@ -66,7 +66,7 @@
- @ifinfo
- @dircategory The Algorithmic Language Scheme
- @direntry
--* R5RS: (r5rs).                 The Revised(5) Report on Scheme.
-+* R5RS: (r5rs).				The Revised(5) Report on Scheme
- @end direntry
- @end ifinfo
- 
---- guile-1.6.1/doc/tutorial/guile-tut.texi.orig	Sat Dec  7 23:41:30 2002
-+++ guile-1.6.1/doc/tutorial/guile-tut.texi	Tue Dec 24 23:48:06 2002
+ @setchapternewpage odd
+diff -urNp -x '*.orig' guile-1.8.8.org/doc/tutorial/guile-tut.texi guile-1.8.8/doc/tutorial/guile-tut.texi
+--- guile-1.8.8.org/doc/tutorial/guile-tut.texi	2010-12-13 18:24:39.000000000 +0100
++++ guile-1.8.8/doc/tutorial/guile-tut.texi	2023-02-02 08:57:34.637458266 +0100
 @@ -8,7 +8,7 @@
  
  @dircategory The Algorithmic Language Scheme
