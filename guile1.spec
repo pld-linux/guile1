@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	tests	# don't perform ./check-guile
+%bcond_with	tests	# testing by ./check-guile
 #
 %define		ver	1.8
 Summary:	GNU Extension language
@@ -32,12 +32,13 @@ BuildRequires:	libltdl-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
+BuildRequires:	sed >= 4.0
 BuildRequires:	texinfo
 Requires:	umb-scheme
 Obsoletes:	libguile9 < 5:1.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%ifarch sparc sparc64
+%ifarch sparc sparcv9 sparc64
 %undefine	with_tests
 %endif
 
@@ -166,7 +167,7 @@ cd guile-readline
 automake -a -c --foreign
 cd ..
 %configure \
-	--enable-error-on-warning=no
+	--disable-error-on-warning
 
 %{__make}
 
@@ -181,16 +182,16 @@ install -d $RPM_BUILD_ROOT{%{_datadir}/guile/site,%{_libdir}/guile}
 	DESTDIR=$RPM_BUILD_ROOT \
 	aclocaldir=%{_aclocaldir}
 
-mv $RPM_BUILD_ROOT%{_bindir}/guile{,1}
-mv $RPM_BUILD_ROOT%{_bindir}/guile{,1}-tools
-mv $RPM_BUILD_ROOT%{_bindir}/guile{,1}-config
-mv $RPM_BUILD_ROOT%{_bindir}/guile{,1}-snarf
-mv $RPM_BUILD_ROOT%{_libdir}/libguile{,1}.so
-mv $RPM_BUILD_ROOT%{_libdir}/libguile{,1}.la
-mv $RPM_BUILD_ROOT%{_libdir}/libguile{,1}.a
-mv $RPM_BUILD_ROOT%{_aclocaldir}/guile{,1}.m4
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/guile{,1}
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/guile{,1}-tools
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/guile{,1}-config
+%{__mv} $RPM_BUILD_ROOT%{_bindir}/guile{,1}-snarf
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/libguile{,1}.so
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/libguile{,1}.la
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/libguile{,1}.a
+%{__mv} $RPM_BUILD_ROOT%{_aclocaldir}/guile{,1}.m4
 
-sed -i -e's/libguile\.\(l\?a\)/libguile1.\1/' $RPM_BUILD_ROOT%{_libdir}/*.la
+%{__sed} -i -e's/libguile\.\(l\?a\)/libguile1.\1/' $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
