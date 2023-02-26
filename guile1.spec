@@ -34,7 +34,7 @@ BuildRequires:	ncurses-devel >= 5.2
 BuildRequires:	readline-devel >= 4.2
 BuildRequires:	texinfo
 Requires:	umb-scheme
-Obsoletes:	libguile9
+Obsoletes:	libguile9 < 5:1.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %ifarch sparc sparc64
@@ -92,7 +92,7 @@ Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	gmp-devel >= 4.1
 Requires:	libltdl-devel
 Requires:	m4
-Obsoletes:	libguile9-devel
+Obsoletes:	libguile9-devel < 5:1.6
 
 %description devel
 What's needed to develop apps linked w/ guile
