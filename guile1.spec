@@ -12,7 +12,7 @@ Summary(ru.UTF-8):	Язык расширений GNU
 Summary(uk.UTF-8):	Мова розширень GNU
 Name:		guile1
 Version:	1.8.8
-Release:	5
+Release:	6
 License:	GPL v2+/LGPL v2.1+
 Group:		Development/Languages
 Source0:	http://ftp.gnu.org/gnu/guile/guile-%{version}.tar.gz
@@ -41,6 +41,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %ifarch sparc sparcv9 sparc64
 %undefine	with_tests
 %endif
+
+# avoids SIGSEGV when compiled with gcc 12.2.0
+%define		specflags_i686	-fno-inline-functions
 
 %description
 Guile, a portable, embeddable Scheme implementation written in C.
